@@ -62,7 +62,7 @@ function CodeSnippet() {
     '  -H "Content-Type: application/json" \\',
     "  -d '{",
     '    "recipients": ["+233547071660"],',
-    '    "message": "Hello from Messaging API!",',
+    '    "message": "Hello from Push Messaging API!",',
     '    "sender": "MYAPP"',
     "  }'",
   ].join('\n');
@@ -168,7 +168,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="Developer Documentation"
-      description="Messaging API — powerful developer-friendly APIs for SMS, Voice, and Contact management.">
+      description="Push Messaging API — powerful developer-friendly APIs for SMS, Voice, and Contact management.">
       <HomepageHeader />
       <StatsBar />
       <main>

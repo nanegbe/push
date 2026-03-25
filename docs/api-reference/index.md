@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # API Overview
 
-Welcome to the Messaging API documentation. This API provides a comprehensive set of endpoints for sending SMS messages, voice calls, managing contacts, and handling authentication.
+Welcome to the Push Messaging API documentation. This API provides a comprehensive set of endpoints for sending SMS messages, voice calls, managing contacts, and handling authentication.
 
 ## Base URL
 

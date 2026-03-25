@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Quick Start Guide
 
-Get up and running with the Messaging API in minutes. This guide will walk you through the essential steps to start sending messages.
+Get up and running with the Push Messaging API in minutes. This guide will walk you through the essential steps to start sending messages.
 
 ## Prerequisites
 
@@ -103,7 +103,7 @@ curl -X POST http://localhost:3000/api/v1/sms/send \
   -H "Content-Type: application/json" \
   -d '{
     "recipients": ["+233547071660"],
-    "message": "Hello from Messaging API!",
+    "message": "Hello from Push Messaging API!",
     "sender": "MYCOMPANY"
   }'
 ```

@@ -3,7 +3,7 @@ sidebar_position: 1
 sidebar_label: Introduction
 ---
 
-# Welcome to the Messaging API Documentation
+# Welcome to the Push Messaging API Documentation
 
 This documentation provides everything you need to integrate our messaging services into your applications. Whether you're sending SMS messages, making voice calls, or managing contacts, you'll find comprehensive guides and examples here.
 
