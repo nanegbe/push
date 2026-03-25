@@ -1,23 +1,390 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
+/* ────────────────────────────────────────────────
+   Hero Banner
+   ──────────────────────────────────────────────── */
 .heroBanner {
-  padding: 4rem 0;
+  padding: 6rem 0 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: var(--landing-gradient);
+  color: #fff;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 60% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.heroSubtitle {
+  font-size: 1.35rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  background: #fff;
+  color: #4f46e5;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  color: #4338ca;
+  text-decoration: none;
+}
+
+.secondaryBtn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  padding: 0.85rem 2rem;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.secondaryBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ────────────────────────────────────────────────
+   Code Snippet Section
+   ──────────────────────────────────────────────── */
+.codeSection {
+  padding: 4rem 0;
+  background: var(--landing-gradient-subtle);
+}
+
+.codeSectionInner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.codeSectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.codeSectionSub {
+  text-align: center;
+  color: var(--landing-text-muted);
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+}
+
+.codeBlock {
+  background: var(--landing-code-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--landing-shadow-lg);
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.codeDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.codeDotRed {
+  background: #ef4444;
+}
+
+.codeDotYellow {
+  background: #eab308;
+}
+
+.codeDotGreen {
+  background: #22c55e;
+}
+
+.codeHeaderLabel {
+  margin-left: 0.75rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.codeContent {
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.codeContent pre {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.codeContent code {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  white-space: pre;
+}
+
+.codeKeyword {
+  color: #c084fc;
+}
+
+.codeString {
+  color: #34d399;
+}
+
+.codeComment {
+  color: #64748b;
+}
+
+.codeFlag {
+  color: #60a5fa;
+}
+
+.codeUrl {
+  color: #fbbf24;
+}
+
+/* ────────────────────────────────────────────────
+   Use Cases Section
+   ──────────────────────────────────────────────── */
+.useCases {
+  padding: 5rem 0;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.sectionSub {
+  text-align: center;
+  color: var(--landing-text-muted);
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.useCaseGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.useCaseCard {
+  background: var(--landing-card-bg);
+  border: 1px solid var(--landing-glass-border);
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--landing-shadow-sm);
+}
+
+.useCaseCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--landing-shadow-md);
+}
+
+.useCaseIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.useCaseTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.useCaseDesc {
+  color: var(--landing-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ────────────────────────────────────────────────
+   Bottom CTA
+   ──────────────────────────────────────────────── */
+.bottomCta {
+  padding: 5rem 0;
+  background: var(--landing-gradient);
+  text-align: center;
+  color: #fff;
+}
+
+.bottomCtaTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.bottomCtaSub {
+  font-size: 1.15rem;
+  opacity: 0.9;
+  max-width: 550px;
+  margin: 0 auto 2rem;
+}
+
+.bottomCtaBtn {
+  background: #fff;
+  color: #4f46e5;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.bottomCtaBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  color: #4338ca;
+  text-decoration: none;
+}
+
+/* ────────────────────────────────────────────────
+   Stats Bar (between hero and features)
+   ──────────────────────────────────────────────── */
+.statsBar {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 1.5rem;
+  background: var(--landing-card-bg);
+  border-bottom: 1px solid var(--landing-glass-border);
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--ifm-color-primary);
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--landing-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ────────────────────────────────────────────────
+   Responsive
+   ──────────────────────────────────────────────── */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .useCaseGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statsBar {
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .useCaseGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statsBar {
+    gap: 1.5rem;
+  }
+
+  .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
 }
