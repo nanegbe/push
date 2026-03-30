@@ -91,8 +91,6 @@ Initiates a voice call to one or more recipients with a pre-recorded audio messa
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-
-
 Content-Type: application/json
 ```
 
@@ -194,8 +192,6 @@ Resends a previously sent voice call using its reference ID.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-
-
 Content-Type: application/json
 ```
 
@@ -344,8 +340,6 @@ Schedules a voice call to be made at a future date and time.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-
-
 Content-Type: application/json
 ```
 
@@ -414,8 +408,6 @@ Sends a voice message to all contacts in a specific group.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-
-
 Content-Type: application/json
 ```
 

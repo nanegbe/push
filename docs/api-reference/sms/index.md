@@ -19,8 +19,6 @@ Sends an SMS message to one or more recipients.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-
-
 Content-Type: application/json
 ```
 
@@ -133,8 +131,6 @@ Resends a previously sent SMS using its reference ID.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-
-
 Content-Type: application/json
 ```
 
@@ -286,8 +282,6 @@ Schedules an SMS message to be sent at a future date and time.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-
-
 Content-Type: application/json
 ```
 
@@ -361,8 +355,6 @@ Sends an SMS message to all contacts in a specific group.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-
-
 Content-Type: application/json
 ```
 

@@ -228,8 +228,6 @@ Updates the name or contacts of an existing group.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-
-
 Content-Type: application/json
 ```
 
