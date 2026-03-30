@@ -139,9 +139,9 @@ curl -X POST https://messaging-api.esoko.com/api/v1/calls/initiate \
 
   -H "Content-Type: application/json" \
   -d '{
-    "recipients": ["0547071660"],
-    "audioFileName": "2102887ea0454c68f339f6f479da0451d"
-  }'
+  "recipients": ["233201234567"],
+  "audioFileName": "UPLOADED_FILE_ID"
+}'
 ```
 
 ---
@@ -246,6 +246,91 @@ curl -X POST https://messaging-api.esoko.com/api/v1/calls/resend \
       "89140c53-a027-4492-90ec-41a1206c2b51"
     ]
   }'
+```
+
+---
+
+## Estimate Voice Call Price
+
+Calculates the estimated cost for initiating a voice call without actually making it.
+
+**Endpoint:** `POST /api/v1/calls/estimate`
+
+**Authentication:** Bearer Token
+
+### Request
+
+**Headers:**
+```
+Authorization: Bearer <accessToken>
+Content-Type: application/json
+```
+
+**Body:**
+```json
+{
+  "recipients": ["0547071660"],
+  "audioFileName": "2102887ea0454c68f339f6f479da0451d"
+}
+```
+
+### Response
+
+**Status Code:** `200 OK`
+
+**Body:**
+```json
+{
+  "message": "Successful",
+  "data": {
+    "totalCost": 0.05,
+    "currency": "GHS",
+    "recipientCount": 1
+  }
+}
+```
+
+### Example
+
+```bash
+curl -X POST https://messaging-api.esoko.com/api/v1/calls/estimate \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "recipients": ["0547071660"],
+    "audioFileName": "2102887ea0454c68f339f6f479da0451d"
+  }'
+```
+
+---
+
+## Resend Voice Call by Campaign
+
+Resends all failed or pending voice calls for a specific campaign.
+
+**Endpoint:** `POST /api/v1/calls/resend-by-campaign/:campaignId`
+
+**Authentication:** Bearer Token
+
+### Path Parameters
+
+| Parameter | Type   | Required | Description          | Example                 |
+|-----------|--------|----------|----------------------|-------------------------|
+| campaignId| string | Yes      | Unique campaign ID   | "vcmp_123abc456def"      |
+
+### Response
+
+**Status Code:** `201 Created`
+
+**Body:**
+```json
+{
+  "message": "Successfully initiated resend for campaign",
+  "data": {
+    "campaignId": "vcmp_123abc456def",
+    "resendCount": 8
+  }
+}
 ```
 
 ---
@@ -392,6 +477,70 @@ curl -X POST https://messaging-api.esoko.com/api/v1/calls/initiate-to-group \
   -d '{
     "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
     "audioFileName": "2102887ea0454c68f339f6f479da0451d"
+  }'
+```
+
+---
+
+## Schedule Voice Message to Group
+
+Schedules a voice message to be sent to all contacts in a specific group at a future time.
+
+**Endpoint:** `POST /api/v1/calls/schedule-to-group`
+
+**Authentication:** Bearer Token
+
+### Request
+
+**Headers:**
+```
+Authorization: Bearer <accessToken>
+Content-Type: application/json
+```
+
+**Body:**
+```json
+{
+  "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
+  "audioFileName": "2102887ea0454c68f339f6f479da0451d",
+  "schedule": "2026-02-13T15:00:00.000Z"
+}
+```
+
+### Parameters
+
+| Field          | Type     | Required | Description                          | Example                              |
+|----------------|----------|----------|--------------------------------------|--------------------------------------|
+| groupId        | string   | Yes      | UUID of the contact group            | "2db62b6d-b805-4a92-993e-7f9c8af64e72" |
+| audioFileName  | string   | Yes      | File ID of uploaded audio            | "2102887ea0454c68f339f6f479da0451d" |
+| schedule       | string   | Yes      | ISO 8601 formatted datetime (UTC)    | "2026-02-13T15:00:00.000Z"          |
+
+### Response
+
+**Status Code:** `201 Created`
+
+**Body:**
+```json
+{
+  "message": "Successfully scheduled voice message to group",
+  "data": {
+    "scheduledId": "vgsch_abc123def456",
+    "scheduledFor": "2026-02-13T15:00:00.000Z",
+    "recipientCount": 150
+  }
+}
+```
+
+### Example
+
+```bash
+curl -X POST https://messaging-api.esoko.com/api/v1/calls/schedule-to-group \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
+    "audioFileName": "2102887ea0454c68f339f6f479da0451d",
+    "schedule": "2026-02-13T15:00:00.000Z"
   }'
 ```
 

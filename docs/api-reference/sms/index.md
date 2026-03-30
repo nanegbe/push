@@ -79,7 +79,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
     "recipients": ["+233547071660"],
     "message": "Hello, this is a test message.",
     "sender": "Esoko"
-  }'
+}'
 ```
 
 ---
@@ -185,6 +185,94 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/resend \
       "6041c21f-b8d1-4272-be16-7c2c395ac6f9"
     ]
   }'
+```
+
+---
+
+## Estimate SMS Price
+
+Calculates the estimated cost for sending an SMS message without actually sending it.
+
+**Endpoint:** `POST /api/v1/sms/estimate`
+
+**Authentication:** Bearer Token
+
+### Request
+
+**Headers:**
+```
+Authorization: Bearer <accessToken>
+Content-Type: application/json
+```
+
+**Body:**
+```json
+{
+  "recipients": ["+233547071660"],
+  "message": "Hello, this is a test message.",
+  "sender": "Esoko"
+}
+```
+
+### Response
+
+**Status Code:** `200 OK`
+
+**Body:**
+```json
+{
+  "message": "Successful",
+  "data": {
+    "totalUnits": 1,
+    "totalCost": 0.02,
+    "currency": "GHS",
+    "recipientCount": 1
+  }
+}
+```
+
+### Example
+
+```bash
+curl -X POST https://messaging-api.esoko.com/api/v1/sms/estimate \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "recipients": ["+233547071660"],
+    "message": "Hello, this is a test message.",
+    "sender": "Esoko"
+  }'
+```
+
+---
+
+## Resend SMS by Campaign
+
+Resends all failed or pending messages for a specific campaign.
+
+**Endpoint:** `POST /api/v1/sms/resend-by-campaign/:campaignId`
+
+**Authentication:** Bearer Token
+
+### Path Parameters
+
+| Parameter | Type   | Required | Description          | Example                 |
+|-----------|--------|----------|----------------------|-------------------------|
+| campaignId| string | Yes      | Unique campaign ID   | "cmp_123abc456def"      |
+
+### Response
+
+**Status Code:** `201 Created`
+
+**Body:**
+```json
+{
+  "message": "Successfully initiated resend for campaign",
+  "data": {
+    "campaignId": "cmp_123abc456def",
+    "resendCount": 15
+  }
+}
 ```
 
 ---
