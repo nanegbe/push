@@ -50,8 +50,8 @@ The uploaded file should contain phone numbers in the following format:
 **Example CSV:**
 ```csv
 phone,name,email
-+233547071660,John Doe,john@example.com
-+233500318982,Jane Smith,jane@example.com
++23354*******,John Doe,john@example.com
++23350*******,Jane Smith,jane@example.com
 ```
 
 ### Response
@@ -187,13 +187,13 @@ Authorization: Bearer <accessToken>
     "contacts": [
       {
         "id": "c1",
-        "phone": "+233547071660",
+        "phone": "+23354*******",
         "name": "John Doe",
         "email": "john@example.com"
       },
       {
         "id": "c2",
-        "phone": "+233500318982",
+        "phone": "+23350*******",
         "name": "Jane Smith",
         "email": "jane@example.com"
       }

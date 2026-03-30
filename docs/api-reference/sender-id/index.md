@@ -129,7 +129,7 @@ Once approved, use your sender ID when sending messages:
 
 ```json
 {
-  "recipients": ["+233547071660"],
+  "recipients": ["+23354*******"],
   "message": "Hello from Esoko!",
   "sender": "Esoko"
 }

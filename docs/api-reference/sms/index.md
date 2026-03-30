@@ -25,7 +25,7 @@ Content-Type: application/json
 **Body:**
 ```json
 {
-  "recipients": ["+233547071660"],
+  "recipients": ["+23354*******"],
   "message": "Hello, this is a test message.",
   "sender": "Esoko"
 }
@@ -35,7 +35,7 @@ Content-Type: application/json
 
 | Field      | Type     | Required | Description                                      | Example                        |
 |------------|----------|----------|--------------------------------------------------|--------------------------------|
-| recipients | array    | Yes      | Array of phone numbers in international format   | ["+233547071660"]             |
+| recipients | array    | Yes      | Array of phone numbers in international format   | ["+23354*******"]             |
 | message    | string   | Yes      | Message content (max 160 chars for single SMS)   | "Hello, this is a test message"|
 | sender     | string   | Yes      | Sender ID (must be pre-approved)                 | "Esoko"                        |
 
@@ -58,7 +58,7 @@ Content-Type: application/json; charset=utf-8
   "message": "Successful",
   "data": [
     {
-      "phoneNumber": "233547071660",
+      "phoneNumber": "23354*******",
       "reference": "4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef"
     }
   ]
@@ -72,7 +72,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -H "Content-Type: application/json" \
   -d '{
-    "recipients": ["+233547071660"],
+    "recipients": ["+23354*******"],
     "message": "Hello, this is a test message.",
     "sender": "Esoko"
 }'
@@ -89,7 +89,7 @@ Sends the same message to multiple phone numbers.
 **Request Body:**
 ```json
 {
-  "recipients": ["+233547071660", "+233500318982", "+233244123456"],
+  "recipients": ["+23354*******", "+23350*******", "+23324*******"],
   "message": "Hello to all recipients!",
   "sender": "Esoko"
 }
@@ -101,15 +101,15 @@ Sends the same message to multiple phone numbers.
   "message": "Successful",
   "data": [
     {
-      "phoneNumber": "233547071660",
+      "phoneNumber": "23354*******",
       "reference": "ref-001"
     },
     {
-      "phoneNumber": "233500318982",
+      "phoneNumber": "23350*******",
       "reference": "ref-002"
     },
     {
-      "phoneNumber": "233244123456",
+      "phoneNumber": "23324*******",
       "reference": "ref-003"
     }
   ]
@@ -160,7 +160,7 @@ Content-Type: application/json
   "data": [
     {
       "reference": "6041c21f-b8d1-4272-be16-7c2c395ac6f9",
-      "phoneNumber": "233536369414"
+      "phoneNumber": "23353*******"
     }
   ]
 }
@@ -200,7 +200,7 @@ Content-Type: application/json
 **Body:**
 ```json
 {
-  "recipients": ["+233547071660"],
+  "recipients": ["+23354*******"],
   "message": "Hello, this is a test message.",
   "sender": "Esoko"
 }
@@ -230,7 +230,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/estimate \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -H "Content-Type: application/json" \
   -d '{
-    "recipients": ["+233547071660"],
+    "recipients": ["+23354*******"],
     "message": "Hello, this is a test message.",
     "sender": "Esoko"
   }'
@@ -289,8 +289,8 @@ Content-Type: application/json
 ```json
 {
   "recipients": [
-    "+233547071660",
-    "+233500318982"
+    "+23354*******",
+    "+23350*******"
   ],
   "message": "Hello, this is a scheduled test message",
   "sender": "Esoko",
@@ -302,7 +302,7 @@ Content-Type: application/json
 
 | Field      | Type     | Required | Description                                      | Example                          |
 |------------|----------|----------|--------------------------------------------------|----------------------------------|
-| recipients | array    | Yes      | Array of phone numbers                           | ["+233547071660"]               |
+| recipients | array    | Yes      | Array of phone numbers                           | ["+23354*******"]               |
 | message    | string   | Yes      | Message content                                  | "Scheduled message"              |
 | sender     | string   | Yes      | Sender ID                                        | "Esoko"                          |
 | schedule   | string   | Yes      | ISO 8601 formatted datetime (UTC)                | "2026-02-13T09:23:00.000Z"      |
@@ -331,8 +331,8 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/schedule \
   -H "Content-Type: application/json" \
   -d '{
     "recipients": [
-      "+233547071660",
-      "+233500318982"
+      "+23354*******",
+      "+23354*******"
     ],
     "message": "Hello, this is a scheduled test message",
     "sender": "Esoko",
@@ -389,11 +389,11 @@ Content-Type: application/json
     "failedSends": 2,
     "references": [
       {
-        "phoneNumber": "233547071660",
+        "phoneNumber": "23354*******",
         "reference": "grp-ref-001"
       },
       {
-        "phoneNumber": "233500318982",
+        "phoneNumber": "23354*******",
         "reference": "grp-ref-002"
       }
     ]
@@ -421,7 +421,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send-to-group \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -H "Content-Type: application/json" \
   -d '{
-    "recipients": "233201234567", "233201234568",
+    "recipients": "23320*******", "23320*******",
     "message": "Hello to the entire group!",
     "sender": "Esoko"
   }'
@@ -462,7 +462,7 @@ Authorization: Bearer <accessToken>
   "message": "Successful",
   "data": {
     "reference": "4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef",
-    "phoneNumber": "233547071660",
+    "phoneNumber": "23354*******",
     "status": "DELIVERED",
     "sentAt": "2026-02-12T11:10:45.000Z",
     "deliveredAt": "2026-02-12T11:10:50.000Z"

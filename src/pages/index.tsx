@@ -61,7 +61,7 @@ function CodeSnippet() {
     '  -H "Authorization: Bearer <token>" \\',
     '  -H "Content-Type: application/json" \\',
     "  -d '{",
-    '    "recipients": ["+233547071660"],',
+    '    "recipients": ["+23354*******"],',
     '    "message": "Hello from Push Messaging API!",',
     '    "sender": "MYAPP"',
     "  }'",

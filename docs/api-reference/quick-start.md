@@ -98,7 +98,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "recipients": ["+233547071660"],
+    "recipients": ["+23354*******"],
     "message": "Hello from Push Messaging API!",
     "sender": "MYCOMPANY"
   }'
@@ -110,7 +110,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
   "message": "Successful",
   "data": [
     {
-      "phoneNumber": "233547071660",
+      "phoneNumber": "23354*******",
       "reference": "4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef"
     }
   ]
@@ -153,9 +153,9 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
   -H "Content-Type: application/json" \
   -d '{
     "recipients": [
-      "+233547071660",
-      "+233500318982",
-      "+233244123456"
+      "+23354*******",
+      "+23350*******",
+      "+23324*******"
     ],
     "message": "Bulk message to multiple recipients",
     "sender": "MYCOMPANY"
@@ -169,7 +169,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/schedule \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "recipients": ["+233547071660"],
+    "recipients": ["+23354*******"],
     "message": "Scheduled message",
     "sender": "MYCOMPANY",
     "schedule": "2026-02-20T09:00:00.000Z"
@@ -225,7 +225,7 @@ x-account-id: <accountId>
 Send OTPs, order confirmations, alerts:
 ```json
 {
-  "recipients": ["+233547071660"],
+  "recipients": ["+23354*******"],
   "message": "Your OTP is 123456. Valid for 10 minutes.",
   "sender": "MYAPP"
 }
@@ -245,7 +245,7 @@ Send promotional messages to contact groups:
 Schedule reminder messages:
 ```json
 {
-  "recipients": ["+233547071660"],
+  "recipients": ["+23354*******"],
   "message": "Reminder: Your appointment is tomorrow at 2 PM.",
   "sender": "CLINIC",
   "schedule": "2026-02-20T08:00:00.000Z"

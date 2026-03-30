@@ -6,7 +6,7 @@ sidebar_position: 2
 
 The Authentication section covers endpoints for creating API clients, logging in via SSO, and generating API keys.
 
-## Create Client Key
+<!-- ## Create Client Key
 
 Creates a new API client with credentials.
 
@@ -62,7 +62,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/api-clients \
   }'
 ```
 
----
+--- -->
 
 <!-- ## SSO Login
 
@@ -207,16 +207,16 @@ curl -X GET https://messaging-api.esoko.com/api/v1/api-keys \
 
 Here's the complete authentication flow:
 
-1. **Create API Client** (One-time setup)
+<!-- 1. **Create API Client** (One-time setup)
    - Returns `clientKey` and `clientSecret`
    
 2. **Login via SSO**
-   - Returns `accessToken` and `refreshToken`
+   - Returns `accessToken` and `refreshToken` -->
    
-3. **Generate/Get API Key** (Optional)
+1. **Generate/Get API Key** 
    - Use for programmatic access without user login
 
-4. **Use Access Token**
+2. **Use Access Token**
    - Include `accessToken` in Authorization header
 
 

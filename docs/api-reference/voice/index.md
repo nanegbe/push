@@ -135,7 +135,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/calls/initiate \
 
   -H "Content-Type: application/json" \
   -d '{
-  "recipients": ["233201234567"],
+  "recipients": ["23320*******"],
   "audioFileName": "UPLOADED_FILE_ID"
 }'
 ```
