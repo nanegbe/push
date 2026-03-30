@@ -147,12 +147,16 @@ Content-Type: application/json
 }
 ```
 
+### Example
+
+```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/api-keys \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -H "Content-Type: application/json" \
   -d '{
     "name": "My Integration"
   }'
+```
 
 Retrieves the current API key.
 

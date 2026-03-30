@@ -77,8 +77,6 @@ phone,name,email
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/contacts/groups \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -F "name=api-test" \
   -F "file=@/path/to/contacts.xlsx"
 ```
@@ -148,7 +146,6 @@ Authorization: Bearer <accessToken>
 curl -X GET "https://messaging-api.esoko.com/api/v1/contacts/groups?page=1&pageSize=10" \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
 
-  
 ```
 
 ---
@@ -214,7 +211,6 @@ Authorization: Bearer <accessToken>
 curl -X GET https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
 
-  
 ```
 
 ---
@@ -268,8 +264,6 @@ Content-Type: application/json
 ```bash
 curl -X PUT https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -H "Content-Type: application/json" \
   -d '{
     "name": "Updated Group Name"
@@ -311,7 +305,6 @@ Authorization: Bearer <accessToken>
 ```bash
 curl -X DELETE https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
   
 ```
 
@@ -360,8 +353,6 @@ file: [Excel or CSV file with new contacts]
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72/contacts \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -F "file=@new-contacts.csv"
 ```
 

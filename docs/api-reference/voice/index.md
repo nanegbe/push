@@ -73,8 +73,6 @@ Content-Type: application/json; charset=utf-8
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/files/upload \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -F "file=@/path/to/voice-message.mp3"
 ```
 
@@ -238,8 +236,6 @@ Content-Type: application/json
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/calls/resend \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -H "Content-Type: application/json" \
   -d '{
     "references": [
@@ -393,8 +389,6 @@ Content-Type: application/json
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/calls/schedule \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -H "Content-Type: application/json" \
   -d '{
     "recipients": [
@@ -471,8 +465,6 @@ Content-Type: application/json
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/calls/initiate-to-group \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -H "Content-Type: application/json" \
   -d '{
     "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
@@ -606,7 +598,6 @@ Authorization: Bearer <accessToken>
 ```bash
 curl -X GET https://messaging-api.esoko.com/api/v1/calls/status/0327df6b-1c83-45d3-a918-18561b57c36e \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
   
 ```
 
@@ -645,8 +636,7 @@ Authorization: Bearer <accessToken>
 ```bash
 curl -X DELETE https://messaging-api.esoko.com/api/v1/calls/schedule/vsch_abc123def456 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-  
+ 
 ```
 
 ---

@@ -72,8 +72,6 @@ Content-Type: application/json; charset=utf-8
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -H "Content-Type: application/json" \
   -d '{
     "recipients": ["+233547071660"],
@@ -177,8 +175,6 @@ Content-Type: application/json
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/sms/resend \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -H "Content-Type: application/json" \
   -d '{
     "references": [
@@ -338,8 +334,6 @@ Content-Type: application/json
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/sms/schedule \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -H "Content-Type: application/json" \
   -d '{
     "recipients": [
@@ -420,8 +414,6 @@ Content-Type: application/json
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/sms/send-to-group \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -H "Content-Type: application/json" \
   -d '{
     "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
@@ -435,8 +427,6 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send-to-group \
 ```bash
 curl -X POST https://messaging-api.esoko.com/api/v1/sms/send-to-group \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
   -H "Content-Type: application/json" \
   -d '{
     "recipients": "233201234567", "233201234568",
@@ -504,8 +494,7 @@ Authorization: Bearer <accessToken>
 ```bash
 curl -X GET https://messaging-api.esoko.com/api/v1/sms/status/4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-  
+ 
 ```
 
 ---
@@ -543,7 +532,6 @@ Authorization: Bearer <accessToken>
 ```bash
 curl -X DELETE https://messaging-api.esoko.com/api/v1/sms/schedule/sch_abc123def456 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
   
 ```
 
