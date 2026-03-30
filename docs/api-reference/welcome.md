@@ -80,7 +80,7 @@ Explore code examples in multiple languages and download SDKs from our **[GitHub
 2. **Follow Quick Start** - Get hands-on experience immediately
 3. **Explore Endpoints** - Dive deep into specific features you need
 4. **Implement** - Use the examples as a starting point for your code
-5. **Test** - Use our sandbox environment for safe testing
+<!-- 5. **Test** - Use our sandbox environment for safe testing -->
 
 ### For Reference
 - Use the **search bar** to find specific endpoints or features
