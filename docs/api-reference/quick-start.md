@@ -110,7 +110,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
   "message": "Successful",
   "data": [
     {
-      "phoneNumber": "23354*******",
+      "phoneNumber": "+23354*******",
       "reference": "4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef"
     }
   ]
