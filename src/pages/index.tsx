@@ -57,7 +57,7 @@ function StatsBar() {
 function CodeSnippet() {
   const codeText = [
     '# Send an SMS message',
-    'curl -X POST https://api.messaging.example.com/api/v1/sms/send \\',
+    'curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \\',
     '  -H "Authorization: Bearer <token>" \\',
     '  -H "Content-Type: application/json" \\',
     "  -d '{",

@@ -92,7 +92,7 @@ Explore code examples in multiple languages and download SDKs from our **[GitHub
 
 ### Base URL
 ```
-https://api.messaging.example.com/api/v1
+https://messaging-api.esoko.com/api/v1
 
 ```
 
