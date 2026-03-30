@@ -64,7 +64,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/api-clients \
 
 ---
 
-## SSO Login
+<!-- ## SSO Login
 
 Authenticates a user and returns an access token.
 
@@ -114,7 +114,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/auth/sso-login \
   }'
 ```
 
----
+--- -->
 
 ## Generate API Key
 
