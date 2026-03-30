@@ -298,7 +298,7 @@ Always check response status codes:
    - Use clear, professional language
    - Include opt-out instructions for marketing messages
 
-## Testing
+<!-- ## Testing
 
 Use our sandbox environment for testing:
 
@@ -306,7 +306,7 @@ Use our sandbox environment for testing:
 # Replace base URL with sandbox endpoint
 curl -X POST https://sandbox-api.example.com/api/v1/sms/send \
   ...
-```
+``` -->
 
 ## Support Resources
 
