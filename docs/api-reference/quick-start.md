@@ -20,7 +20,7 @@ Before you begin, ensure you have:
 First, create an API client to get your credentials:
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/api-clients \
+curl -X POST https://messaging-api.esoko.com/api/v1/api-clients \
   -H "Content-Type: application/json" \
   -d '{
     "name": "my-app"
@@ -45,7 +45,7 @@ curl -X POST http://localhost:3000/api/v1/api-clients \
 Login to get your access token:
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/auth/sso-login \
+curl -X POST https://messaging-api.esoko.com/api/v1/auth/sso-login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "your-email@example.com",
@@ -72,10 +72,8 @@ Save the `accessToken` - you'll need it for all authenticated requests.
 Register a sender ID for your messages:
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/sender-id \
+curl -X POST https://messaging-api.esoko.com/api/v1/sender-id \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "client-key: YOUR_CLIENT_KEY" \
-  -H "client-secret: YOUR_CLIENT_SECRET" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "MYCOMPANY"
@@ -96,10 +94,8 @@ curl -X POST http://localhost:3000/api/v1/sender-id \
 Once your sender ID is approved, send a test message:
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/sms/send \
+curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "client-key: YOUR_CLIENT_KEY" \
-  -H "client-secret: YOUR_CLIENT_SECRET" \
   -H "Content-Type: application/json" \
   -d '{
     "recipients": ["+233547071660"],
@@ -128,10 +124,8 @@ curl -X POST http://localhost:3000/api/v1/sms/send \
 Monitor your account balance:
 
 ```bash
-curl -X GET http://localhost:3000/api/v1/balance \
+curl -X GET https://messaging-api.esoko.com/api/v1/balance \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "client-key: YOUR_CLIENT_KEY" \
-  -H "client-secret: YOUR_CLIENT_SECRET" \
   -H "x-account-id: YOUR_ACCOUNT_ID"
 ```
 
@@ -154,10 +148,8 @@ Now that you've mastered the basics, explore more features:
 ### Send Bulk Messages
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/sms/send \
+curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "client-key: YOUR_CLIENT_KEY" \
-  -H "client-secret: YOUR_CLIENT_SECRET" \
   -H "Content-Type: application/json" \
   -d '{
     "recipients": [
@@ -173,10 +165,8 @@ curl -X POST http://localhost:3000/api/v1/sms/send \
 ### Schedule a Message
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/sms/schedule \
+curl -X POST https://messaging-api.esoko.com/api/v1/sms/schedule \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "client-key: YOUR_CLIENT_KEY" \
-  -H "client-secret: YOUR_CLIENT_SECRET" \
   -H "Content-Type: application/json" \
   -d '{
     "recipients": ["+233547071660"],
@@ -190,17 +180,13 @@ curl -X POST http://localhost:3000/api/v1/sms/schedule \
 
 ```bash
 # 1. Upload voice file
-curl -X POST http://localhost:3000/api/v1/files/upload \
+curl -X POST https://messaging-api.esoko.com/api/v1/files/upload \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "client-key: YOUR_CLIENT_KEY" \
-  -H "client-secret: YOUR_CLIENT_SECRET" \
   -F "file=@voice-message.mp3"
 
 # 2. Send voice message
-curl -X POST http://localhost:3000/api/v1/calls/initiate \
+curl -X POST https://messaging-api.esoko.com/api/v1/calls/initiate \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "client-key: YOUR_CLIENT_KEY" \
-  -H "client-secret: YOUR_CLIENT_SECRET" \
   -H "Content-Type: application/json" \
   -d '{
     "recipients": ["0547071660"],
@@ -213,10 +199,8 @@ curl -X POST http://localhost:3000/api/v1/calls/initiate \
 Upload an Excel or CSV file with contacts:
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/contacts/groups \
+curl -X POST https://messaging-api.esoko.com/api/v1/contacts/groups \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "client-key: YOUR_CLIENT_KEY" \
-  -H "client-secret: YOUR_CLIENT_SECRET" \
   -F "name=Marketing List" \
   -F "file=@contacts.xlsx"
 ```
@@ -227,8 +211,7 @@ All authenticated requests require these headers:
 
 ```
 Authorization: Bearer <accessToken>
-client-key: <clientKey>
-client-secret: <clientSecret>
+
 ```
 
 Optional for multi-account management:

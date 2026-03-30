@@ -19,8 +19,8 @@ Uploads an audio file to be used for voice messages.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: multipart/form-data
 ```
 
@@ -71,10 +71,10 @@ Content-Type: application/json; charset=utf-8
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/files/upload \
+curl -X POST https://messaging-api.esoko.com/api/v1/files/upload \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -F "file=@/path/to/voice-message.mp3"
 ```
 
@@ -93,8 +93,8 @@ Initiates a voice call to one or more recipients with a pre-recorded audio messa
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: application/json
 ```
 
@@ -133,10 +133,10 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/calls/initiate \
+curl -X POST https://messaging-api.esoko.com/api/v1/calls/initiate \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -H "Content-Type: application/json" \
   -d '{
     "recipients": ["0547071660"],
@@ -196,8 +196,8 @@ Resends a previously sent voice call using its reference ID.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: application/json
 ```
 
@@ -236,10 +236,10 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/calls/resend \
+curl -X POST https://messaging-api.esoko.com/api/v1/calls/resend \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -H "Content-Type: application/json" \
   -d '{
     "references": [
@@ -263,8 +263,8 @@ Schedules a voice call to be made at a future date and time.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: application/json
 ```
 
@@ -306,10 +306,10 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/calls/schedule \
+curl -X POST https://messaging-api.esoko.com/api/v1/calls/schedule \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -H "Content-Type: application/json" \
   -d '{
     "recipients": [
@@ -335,8 +335,8 @@ Sends a voice message to all contacts in a specific group.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: application/json
 ```
 
@@ -384,10 +384,10 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/calls/initiate-to-group \
+curl -X POST https://messaging-api.esoko.com/api/v1/calls/initiate-to-group \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -H "Content-Type: application/json" \
   -d '{
     "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
@@ -410,8 +410,8 @@ Retrieves the status of a voice call.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 ```
 
 ### Path Parameters
@@ -455,10 +455,10 @@ client-secret: <your-client-secret>
 ### Example
 
 ```bash
-curl -X GET http://localhost:3000/api/v1/calls/status/0327df6b-1c83-45d3-a918-18561b57c36e \
+curl -X GET https://messaging-api.esoko.com/api/v1/calls/status/0327df6b-1c83-45d3-a918-18561b57c36e \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr"
+
+  
 ```
 
 ---
@@ -476,8 +476,8 @@ Cancels a scheduled voice call before it's made.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 ```
 
 ### Response
@@ -494,10 +494,10 @@ client-secret: <your-client-secret>
 ### Example
 
 ```bash
-curl -X DELETE http://localhost:3000/api/v1/calls/schedule/vsch_abc123def456 \
+curl -X DELETE https://messaging-api.esoko.com/api/v1/calls/schedule/vsch_abc123def456 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr"
+
+  
 ```
 
 ---

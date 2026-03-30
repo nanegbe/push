@@ -55,7 +55,7 @@ Content-Type: application/json; charset=utf-8
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/api-clients \
+curl -X POST https://messaging-api.esoko.com/api/v1/api-clients \
   -H "Content-Type: application/json" \
   -d '{
     "name": "push-v2"
@@ -106,7 +106,7 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/auth/sso-login \
+curl -X POST https://messaging-api.esoko.com/api/v1/auth/sso-login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "user@example.com",
@@ -120,7 +120,7 @@ curl -X POST http://localhost:3000/api/v1/auth/sso-login \
 
 Generates an API key for programmatic access.
 
-**Endpoint:** `POST /api/v1/api-keys/generate`
+**Endpoint:** `POST /api/v1/api-keys`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -129,8 +129,7 @@ Generates an API key for programmatic access.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
 Content-Type: application/json
 ```
 
@@ -148,18 +147,12 @@ Content-Type: application/json
 }
 ```
 
-### Example
-
-```bash
-curl -X POST http://localhost:3000/api/v1/api-keys/generate \
+curl -X POST https://messaging-api.esoko.com/api/v1/api-keys \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr"
-```
-
----
-
-## Get API Key
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "My Integration"
+  }'
 
 Retrieves the current API key.
 
@@ -172,8 +165,7 @@ Retrieves the current API key.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
 ```
 
 ### Response
@@ -194,10 +186,15 @@ client-secret: <your-client-secret>
 ### Example
 
 ```bash
-curl -X GET http://localhost:3000/api/v1/api-keys \
+curl -X GET https://messaging-api.esoko.com/api/v1/api-keys \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr"
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "My Integration"
+  }'
+
+  
+
 ```
 
 ---
@@ -217,11 +214,9 @@ Here's the complete authentication flow:
 
 4. **Use Access Token**
    - Include `accessToken` in Authorization header
-   - Include `client-key` and `client-secret` for rate limiting
+
 
 ## Best Practices
-
-- Store your `clientSecret` and `accessToken` securely
 - Never expose credentials in client-side code
 - Refresh tokens before expiration
 - Use environment variables for credentials

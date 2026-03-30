@@ -19,8 +19,8 @@ Creates a new contact group by uploading a file containing contact information.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: multipart/form-data
 ```
 
@@ -75,10 +75,10 @@ phone,name,email
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/contacts/groups \
+curl -X POST https://messaging-api.esoko.com/api/v1/contacts/groups \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -F "name=api-test" \
   -F "file=@/path/to/contacts.xlsx"
 ```
@@ -98,8 +98,8 @@ Retrieves all contact groups for the authenticated user.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 ```
 
 ### Query Parameters
@@ -145,10 +145,10 @@ client-secret: <your-client-secret>
 ### Example
 
 ```bash
-curl -X GET "http://localhost:3000/api/v1/contacts/groups?page=1&pageSize=10" \
+curl -X GET "https://messaging-api.esoko.com/api/v1/contacts/groups?page=1&pageSize=10" \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr"
+
+  
 ```
 
 ---
@@ -166,8 +166,8 @@ Retrieves detailed information about a specific contact group including all cont
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 ```
 
 ### Path Parameters
@@ -211,10 +211,10 @@ client-secret: <your-client-secret>
 ### Example
 
 ```bash
-curl -X GET http://localhost:3000/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
+curl -X GET https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr"
+
+  
 ```
 
 ---
@@ -232,8 +232,8 @@ Updates the name or contacts of an existing group.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: application/json
 ```
 
@@ -266,10 +266,10 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X PUT http://localhost:3000/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
+curl -X PUT https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -H "Content-Type: application/json" \
   -d '{
     "name": "Updated Group Name"
@@ -291,8 +291,8 @@ Deletes a contact group and all its contacts.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 ```
 
 ### Response
@@ -309,10 +309,10 @@ client-secret: <your-client-secret>
 ### Example
 
 ```bash
-curl -X DELETE http://localhost:3000/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
+curl -X DELETE https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr"
+
+  
 ```
 
 ---
@@ -330,8 +330,8 @@ Adds new contacts to an existing group.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: multipart/form-data
 ```
 
@@ -358,10 +358,10 @@ file: [Excel or CSV file with new contacts]
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72/contacts \
+curl -X POST https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72/contacts \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -F "file=@new-contacts.csv"
 ```
 

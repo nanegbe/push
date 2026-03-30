@@ -19,8 +19,6 @@ Creates a new sender ID for your messaging campaigns.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
 Content-Type: application/json
 ```
 
@@ -60,10 +58,8 @@ Content-Type: application/json; charset=utf-8
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/sender-id \
+curl -X POST https://messaging-api.esoko.com/api/v1/sender-id \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Esoko"

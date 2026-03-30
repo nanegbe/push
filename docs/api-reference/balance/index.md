@@ -19,8 +19,6 @@ Retrieves the current account balance.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
 x-account-id: <account-id>
 ```
 
@@ -58,10 +56,8 @@ Content-Type: application/json; charset=utf-8
 ### Example
 
 ```bash
-curl -X GET http://localhost:3000/api/v1/balance \
+curl -X GET https://messaging-api.esoko.com/api/v1/balance \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
   -H "x-account-id: acc_123456"
 ```
 
@@ -80,8 +76,6 @@ Initiates a balance top-up via payment gateway.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
 x-account-id: <account-id>
 Content-Type: application/json
 ```
@@ -127,10 +121,8 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/balance/top-up \
+curl -X POST https://messaging-api.esoko.com/api/v1/balance/top-up \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
   -H "x-account-id: acc_123456" \
   -H "Content-Type: application/json" \
   -d '{
@@ -162,8 +154,6 @@ Retrieves transaction history for the account.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
 x-account-id: <account-id>
 ```
 
@@ -241,20 +231,16 @@ x-account-id: <account-id>
 ### Example
 
 ```bash
-curl -X GET "http://localhost:3000/api/v1/balance/transactions?page=1&pageSize=10" \
+curl -X GET "https://messaging-api.esoko.com/api/v1/balance/transactions?page=1&pageSize=10" \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
   -H "x-account-id: acc_123456"
 ```
 
 ### Filtered Example
 
 ```bash
-curl -X GET "http://localhost:3000/api/v1/balance/transactions?startDate=2026-02-01T00:00:00.000Z&endDate=2026-02-28T23:59:59.000Z&type=CREDIT" \
+curl -X GET "https://messaging-api.esoko.com/api/v1/balance/transactions?startDate=2026-02-01T00:00:00.000Z&endDate=2026-02-28T23:59:59.000Z&type=CREDIT" \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
   -H "x-account-id: acc_123456"
 ```
 
@@ -273,8 +259,6 @@ Retrieves detailed information about a specific transaction.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
 x-account-id: <account-id>
 ```
 
@@ -316,10 +300,8 @@ x-account-id: <account-id>
 ### Example
 
 ```bash
-curl -X GET http://localhost:3000/api/v1/balance/transactions/3 \
+curl -X GET https://messaging-api.esoko.com/api/v1/balance/transactions/3 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
   -H "x-account-id: acc_123456"
 ```
 
@@ -338,8 +320,6 @@ Sets up automatic low balance notifications.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
 x-account-id: <account-id>
 Content-Type: application/json
 ```
@@ -380,10 +360,8 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/balance/alerts \
+curl -X POST https://messaging-api.esoko.com/api/v1/balance/alerts \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
   -H "x-account-id: acc_123456" \
   -H "Content-Type: application/json" \
   -d '{

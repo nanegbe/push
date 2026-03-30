@@ -19,8 +19,8 @@ Sends an SMS message to one or more recipients.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: application/json
 ```
 
@@ -70,10 +70,10 @@ Content-Type: application/json; charset=utf-8
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/sms/send \
+curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -H "Content-Type: application/json" \
   -d '{
     "recipients": ["+233547071660"],
@@ -135,8 +135,8 @@ Resends a previously sent SMS using its reference ID.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: application/json
 ```
 
@@ -175,10 +175,10 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/sms/resend \
+curl -X POST https://messaging-api.esoko.com/api/v1/sms/resend \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -H "Content-Type: application/json" \
   -d '{
     "references": [
@@ -202,8 +202,8 @@ Schedules an SMS message to be sent at a future date and time.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: application/json
 ```
 
@@ -248,10 +248,10 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/sms/schedule \
+curl -X POST https://messaging-api.esoko.com/api/v1/sms/schedule \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -H "Content-Type: application/json" \
   -d '{
     "recipients": [
@@ -279,8 +279,8 @@ Sends an SMS message to all contacts in a specific group.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 Content-Type: application/json
 ```
 
@@ -330,13 +330,28 @@ Content-Type: application/json
 ### Example
 
 ```bash
-curl -X POST http://localhost:3000/api/v1/sms/send-to-group \
+curl -X POST https://messaging-api.esoko.com/api/v1/sms/send-to-group \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr" \
+
+
   -H "Content-Type: application/json" \
   -d '{
     "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
+    "message": "Hello to the entire group!",
+    "sender": "Esoko"
+  }'
+```
+
+---
+
+```bash
+curl -X POST https://messaging-api.esoko.com/api/v1/sms/send-to-group \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+
+
+  -H "Content-Type: application/json" \
+  -d '{
+    "recipients": "233201234567", "233201234568",
     "message": "Hello to the entire group!",
     "sender": "Esoko"
   }'
@@ -357,8 +372,8 @@ Retrieves the delivery status of a sent SMS message.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 ```
 
 ### Path Parameters
@@ -399,10 +414,10 @@ client-secret: <your-client-secret>
 ### Example
 
 ```bash
-curl -X GET http://localhost:3000/api/v1/sms/status/4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef \
+curl -X GET https://messaging-api.esoko.com/api/v1/sms/status/4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr"
+
+  
 ```
 
 ---
@@ -420,8 +435,8 @@ Cancels a scheduled SMS before it's sent.
 **Headers:**
 ```
 Authorization: Bearer <accessToken>
-client-key: <your-client-key>
-client-secret: <your-client-secret>
+
+
 ```
 
 ### Response
@@ -438,10 +453,10 @@ client-secret: <your-client-secret>
 ### Example
 
 ```bash
-curl -X DELETE http://localhost:3000/api/v1/sms/schedule/sch_abc123def456 \
+curl -X DELETE https://messaging-api.esoko.com/api/v1/sms/schedule/sch_abc123def456 \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "client-key: e552c5b008" \
-  -H "client-secret: POZ]0TUqyxuiAylNsVl2jtfvr"
+
+  
 ```
 
 ---

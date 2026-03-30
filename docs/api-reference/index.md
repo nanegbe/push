@@ -9,7 +9,7 @@ Welcome to the Push Messaging API documentation. This API provides a comprehensi
 ## Base URL
 
 ```
-http://localhost:3000/api/v1
+https://messaging-api.esoko.com/api/v1
 ```
 
 Replace `localhost:3000` with your actual server URL in production.
