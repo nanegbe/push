@@ -70,8 +70,8 @@ Start with our **[Quick Start Guide](./quick-start.md)** to send your first mess
 ### Existing Users
 Jump straight to the **[API Reference](./index.md)** for detailed endpoint documentation.
 
-### Developers
-Explore code examples in multiple languages and download SDKs from our **[GitHub Repository](#)**.
+<!-- ### Developers
+Explore code examples in multiple languages and download SDKs from our **[GitHub Repository](#)**. -->
 
 ## 📖 How to Use This Documentation
 
