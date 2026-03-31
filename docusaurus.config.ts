@@ -158,7 +158,7 @@ const config: Config = {
         //   ],
         // },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Push Messaging API. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Push Messaging API.`,
     },
     prism: {
       theme: prismThemes.github,
