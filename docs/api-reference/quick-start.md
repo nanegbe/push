@@ -15,7 +15,7 @@ Before you begin, ensure you have:
 - Basic understanding of REST APIs
 - Tools like cURL, Postman, or HTTP client libraries
 
-## Step 1: Create API Client
+<!-- ## Step 1: Create API Client
 
 First, create an API client to get your credentials:
 
@@ -38,9 +38,9 @@ curl -X POST https://messaging-api.esoko.com/api/v1/api-clients \
 }
 ```
 
-⚠️ **Important**: Save your `clientKey` and `clientSecret` securely. You won't be able to retrieve the secret again!
+⚠️ **Important**: Save your `clientKey` and `clientSecret` securely. You won't be able to retrieve the secret again! -->
 
-## Step 2: Authenticate
+## Step 1: Authenticate
 
 Login to get your access token:
 
@@ -67,7 +67,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/auth/sso-login \
 
 Save the `accessToken` - you'll need it for all authenticated requests.
 
-## Step 3: Create Sender ID
+## Step 2: Create Sender ID
 
 Register a sender ID for your messages:
 
@@ -89,7 +89,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sender-id \
 
 ✅ Your sender ID will be reviewed and activated within 24-48 hours.
 
-## Step 4: Send Your First SMS
+## Step 3: Send Your First SMS
 
 Once your sender ID is approved, send a test message:
 
@@ -119,7 +119,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
 
 🎉 Congratulations! You've successfully sent your first SMS message.
 
-## Step 5: Check Your Balance
+## Step 4: Check Your Balance
 
 Monitor your account balance:
 
