@@ -289,6 +289,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/calls/estimate \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -H "Content-Type: application/json" \
   -d '{
+    "groupIds": ["group-id-1"],
     "recipients": ["0547071660"],
     "audioFileName": "2102887ea0454c68f339f6f479da0451d"
   }'
@@ -385,6 +386,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/calls/schedule \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -H "Content-Type: application/json" \
   -d '{
+    "groupIds": ["group-id-1"],
     "recipients": [
       "0547071660"
     ],

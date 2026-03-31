@@ -72,9 +72,10 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -H "Content-Type: application/json" \
   -d '{
-    "recipients": ["+23354*******"],
-    "message": "Hello, this is a test message.",
-    "sender": "Esoko"
+  "groupIds": ["group-id-1", "group-id-2"],
+  "recipients": ["23320*******", "23320*******"],
+  "message": "Promo message",
+  "senderId": "eSMS"
 }'
 ```
 
@@ -89,6 +90,7 @@ Sends the same message to multiple phone numbers.
 **Request Body:**
 ```json
 {
+  "groupIds": ["group-id-1", "group-id-2"],
   "recipients": ["+23354*******", "+23350*******", "+23324*******"],
   "message": "Hello to all recipients!",
   "sender": "Esoko"
@@ -200,6 +202,7 @@ Content-Type: application/json
 **Body:**
 ```json
 {
+  "groupIds": ["group-id-1"],
   "recipients": ["+23354*******"],
   "message": "Hello, this is a test message.",
   "sender": "Esoko"
@@ -230,6 +233,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/estimate \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -H "Content-Type: application/json" \
   -d '{
+    "groupIds": ["group-id-1"],
     "recipients": ["+23354*******"],
     "message": "Hello, this is a test message.",
     "sender": "Esoko"
@@ -288,6 +292,7 @@ Content-Type: application/json
 **Body:**
 ```json
 {
+  "groupIds": ["group-id-1"],
   "recipients": [
     "+23354*******",
     "+23350*******"
@@ -330,6 +335,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/schedule \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
   -H "Content-Type: application/json" \
   -d '{
+    "groupIds": ["group-id-1"],
     "recipients": [
       "+23354*******",
       "+23354*******"
