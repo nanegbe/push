@@ -74,7 +74,7 @@ const config: Config = {
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: false,
-      disableSwitch: false,
+      disableSwitch: true,
     },
     navbar: {
       title: 'Push Messaging API',
