@@ -3,31 +3,36 @@ sidebar_position: 1
 sidebar_label: Introduction
 ---
 
+import { 
+  IconWrapper, BookOpenIcon, LockIcon, TagIcon, UsersIcon, SmartphoneIcon, WalletIcon, PhoneIcon,
+  RocketIcon, WrenchIcon, ActivityIcon, HelpCircleIcon, FileTextIcon, TargetIcon, StarIcon
+} from '@site/src/components/Icons';
+
 # Welcome to the Push Messaging API Documentation
 
 This documentation provides everything you need to integrate our messaging services into your applications. Whether you're sending SMS messages, making voice calls, or managing contacts, you'll find comprehensive guides and examples here.
 
-## 📚 What's Inside
+## <IconWrapper><BookOpenIcon /></IconWrapper> What's Inside
 
 ### [Quick Start Guide](./quick-start.md)
 Get up and running in 5 minutes with step-by-step instructions for your first API calls.
 
 ### Core Sections
 
-#### 🔐 [Authentication](./authentication/)
+#### <IconWrapper><LockIcon /></IconWrapper> [Authentication](./authentication/)
 Learn how to authenticate your requests and manage API credentials securely.
 
 - Generate API Keys
 - Best practices for token management
 
-#### 🏷️ [Sender ID](./sender-id/)
+#### <IconWrapper><TagIcon /></IconWrapper> [Sender ID](./sender-id/)
 Register and manage the sender identities for your messages.
 
 - Create sender IDs
 - Guidelines and requirements
 - Approval process
 
-#### 👥 [Contacts](./contacts/)
+#### <IconWrapper><UsersIcon /></IconWrapper> [Contacts](./contacts/)
 Organize your recipients into manageable groups for bulk messaging.
 
 - Create contact groups
@@ -35,7 +40,7 @@ Organize your recipients into manageable groups for bulk messaging.
 - Manage and update groups
 - Group operations
 
-#### 📱 [SMS](./sms/)
+#### <IconWrapper><SmartphoneIcon /></IconWrapper> [SMS](./sms/)
 Send text messages worldwide with delivery tracking and scheduling.
 
 - Send individual messages
@@ -45,7 +50,7 @@ Send text messages worldwide with delivery tracking and scheduling.
 - Track delivery status
 - Group messaging
 
-#### 💰 [Balance](./balance/)
+#### <IconWrapper><WalletIcon /></IconWrapper> [Balance](./balance/)
 Monitor your account balance and transaction history.
 
 - Check balance
@@ -53,7 +58,7 @@ Monitor your account balance and transaction history.
 - View transactions
 - Cost estimation
 
-#### 📞 [Voice](./voice/)
+#### <IconWrapper><PhoneIcon /></IconWrapper> [Voice](./voice/)
 Make automated voice calls with pre-recorded messages.
 
 - Upload audio files
@@ -73,7 +78,7 @@ Jump straight to the **[API Reference](./index.md)** for detailed endpoint docum
 <!-- ### Developers
 Explore code examples in multiple languages and download SDKs from our **[GitHub Repository](#)**. -->
 
-## 📖 How to Use This Documentation
+## <IconWrapper><BookOpenIcon /></IconWrapper> How to Use This Documentation
 
 ### For Integration
 1. **Read the Overview** - Understand the API structure and authentication
@@ -88,7 +93,7 @@ Explore code examples in multiple languages and download SDKs from our **[GitHub
 - Check **code examples** for implementation details
 - Review **error codes** when troubleshooting
 
-## 🔧 API Basics
+## <IconWrapper><WrenchIcon /></IconWrapper> API Basics
 
 ### Base URL
 ```
@@ -138,7 +143,7 @@ Content-Type: application/json
 
 
 
-## 📊 Rate Limits
+## <IconWrapper><ActivityIcon /></IconWrapper> Rate Limits
 
 60 requests per minute
 
@@ -147,7 +152,7 @@ Rate limit headers are included in all responses:
 - `X-RateLimit-Remaining`: Requests remaining in current window
 - `X-RateLimit-Reset`: Time until the rate limit resets (in seconds)
 
-## 🔒 Security Best Practices
+## <IconWrapper><LockIcon /></IconWrapper> Security Best Practices
 
 1. **Keep credentials secure**
    - Never expose secrets in client-side code
@@ -166,7 +171,7 @@ Rate limit headers are included in all responses:
    - Set up balance alerts
    - Review transaction logs regularly
 
-## 🆘 Need Help?
+## <IconWrapper><HelpCircleIcon /></IconWrapper> Need Help?
 
 ### Documentation
 - Search this documentation site
@@ -183,7 +188,7 @@ For critical issues affecting production:
 - **Priority Support**: priority-support@messaging.example.com
 - **Phone**: +1-234-567-8900 (Enterprise only)
 
-## 📝 Versioning
+<!-- ## <IconWrapper><FileTextIcon /></IconWrapper> Versioning
 
 This documentation covers **API v1**. 
 
@@ -191,9 +196,9 @@ This documentation covers **API v1**.
 - Last Updated: March 2026
 - Changelog: See [release notes](#)
 
-We maintain backward compatibility for at least 2 years after releasing new versions.
+We maintain backward compatibility for at least 2 years after releasing new versions. -->
 
-## 🎯 Common Use Cases
+## <IconWrapper><TargetIcon /></IconWrapper> Common Use Cases
 
 ### Transactional Messages
 - OTP verification
@@ -219,7 +224,7 @@ We maintain backward compatibility for at least 2 years after releasing new vers
 - Re-engagement campaigns
 - Birthday wishes
 
-## 🌟 Ready to Begin?
+## <IconWrapper><StarIcon /></IconWrapper> Ready to Begin?
 
 Start with the **[Quick Start Guide](./quick-start.md)** and discover how easy it is to integrate powerful messaging into your applications!
 

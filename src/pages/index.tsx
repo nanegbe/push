@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
+import { ZapIcon, MegaphoneIcon, BellIcon, HandshakeIcon } from '@site/src/components/Icons';
 
 import styles from './index.module.css';
 
@@ -94,36 +95,6 @@ function CodeSnippet() {
     </section>
   );
 }
-
-/* ── Icons ───────────────────────────────────────── */
-const ZapIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-  </svg>
-);
-
-const MegaphoneIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m3 11 18-5v12L3 14v-3z"></path>
-    <path d="M11.6 16.8 a3 3 0 1 1-5.8-1.6"></path>
-  </svg>
-);
-
-const BellIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
-    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
-  </svg>
-);
-
-const HandshakeIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m11 17 2 2 4-4"></path>
-    <path d="m3 10 2.5 2.5L3 15"></path>
-    <path d="M13 17H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7"></path>
-  </svg>
-);
-
 /* ── Use Cases ──────────────────────────────────── */
 function UseCases() {
   const cases = [
