@@ -14,7 +14,7 @@ Send voice messages and make automated calls. This section covers uploading voic
 
 Uploads an audio file to be used for voice messages.
 
-**Endpoint:** `POST /api/v1/files/upload`
+**Endpoint:** `POST {{baseUrl}}/files/upload`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -84,7 +84,7 @@ Uploads an audio file to be used for voice messages.
 
 Initiates a voice call to one or more recipients with a pre-recorded audio message.
 
-**Endpoint:** `POST /api/v1/calls/initiate`
+**Endpoint:** `POST {{baseUrl}}/calls/initiate`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -139,7 +139,7 @@ Initiates a voice call to one or more recipients with a pre-recorded audio messa
 
 Sends the same voice message to multiple phone numbers.
 
-**Endpoint:** `POST /api/v1/calls/initiate`
+**Endpoint:** `POST {{baseUrl}}/calls/initiate`
 
 **Request Body:**
 <ApiTerminal 
@@ -161,7 +161,7 @@ Sends the same voice message to multiple phone numbers.
 
 Resends a previously sent voice call using its reference ID.
 
-**Endpoint:** `POST /api/v1/calls/resend`
+**Endpoint:** `POST {{baseUrl}}/calls/resend`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -216,7 +216,7 @@ Resends a previously sent voice call using its reference ID.
 
 Calculates the estimated cost for initiating a voice call without actually making it.
 
-**Endpoint:** `POST /api/v1/calls/estimate`
+**Endpoint:** `POST {{baseUrl}}/calls/estimate`
 
 **Authentication:** Bearer Token
 
@@ -265,7 +265,7 @@ Calculates the estimated cost for initiating a voice call without actually makin
 
 Resends all failed or pending voice calls for a specific campaign.
 
-**Endpoint:** `POST /api/v1/calls/resend-by-campaign/:campaignId`
+**Endpoint:** `POST {{baseUrl}}/calls/resend-by-campaign/:campaignId`
 
 **Authentication:** Bearer Token
 
@@ -292,7 +292,7 @@ Resends all failed or pending voice calls for a specific campaign.
 
 Schedules a voice call to be made at a future date and time.
 
-**Endpoint:** `POST /api/v1/calls/schedule`
+**Endpoint:** `POST {{baseUrl}}/calls/schedule`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -352,7 +352,7 @@ Schedules a voice call to be made at a future date and time.
 
 Sends a voice message to all contacts in a specific group.
 
-**Endpoint:** `POST /api/v1/calls/initiate-to-group`
+**Endpoint:** `POST {{baseUrl}}/calls/initiate-to-group`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -407,7 +407,7 @@ Sends a voice message to all contacts in a specific group.
 
 Schedules a voice message to be sent to all contacts in a specific group at a future time.
 
-**Endpoint:** `POST /api/v1/calls/schedule-to-group`
+**Endpoint:** `POST {{baseUrl}}/calls/schedule-to-group`
 
 **Authentication:** Bearer Token
 
@@ -464,7 +464,7 @@ Schedules a voice message to be sent to all contacts in a specific group at a fu
 
 Retrieves the status of a voice call.
 
-**Endpoint:** `GET /api/v1/calls/status/:reference`
+**Endpoint:** `GET {{baseUrl}}/calls/status/:reference`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -519,7 +519,7 @@ Retrieves the status of a voice call.
 
 Cancels a scheduled voice call before it's made.
 
-**Endpoint:** `DELETE /api/v1/calls/schedule/:scheduledId`
+**Endpoint:** `DELETE {{baseUrl}}/calls/schedule/:scheduledId`
 
 **Authentication:** Bearer Token + Client Credentials
 

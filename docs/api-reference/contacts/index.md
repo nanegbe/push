@@ -14,7 +14,7 @@ Manage your contact groups and recipients. This section covers creating, updatin
 
 Creates a new contact group by uploading a file containing contact information.
 
-**Endpoint:** `POST /api/v1/contacts/groups`
+**Endpoint:** `POST {{baseUrl}}/contacts/groups`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -87,7 +87,7 @@ The uploaded file should contain phone numbers in the following format:
 
 Retrieves all contact groups for the authenticated user.
 
-**Endpoint:** `GET /api/v1/contacts/groups`
+**Endpoint:** `GET {{baseUrl}}/contacts/groups`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -132,7 +132,7 @@ curl -X GET "https://messaging-api.esoko.com/api/v1/contacts/groups?page=1&pageS
 
 Retrieves detailed information about a specific contact group including all contacts.
 
-**Endpoint:** `GET /api/v1/contacts/groups/:groupId`
+**Endpoint:** `GET {{baseUrl}}/contacts/groups/:groupId`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -174,7 +174,7 @@ Retrieves detailed information about a specific contact group including all cont
 
 Updates the name or contacts of an existing group.
 
-**Endpoint:** `PUT /api/v1/contacts/groups/:groupId`
+**Endpoint:** `PUT {{baseUrl}}/contacts/groups/:groupId`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -224,7 +224,7 @@ Updates the name or contacts of an existing group.
 
 Deletes a contact group and all its contacts.
 
-**Endpoint:** `DELETE /api/v1/contacts/groups/:groupId`
+**Endpoint:** `DELETE {{baseUrl}}/contacts/groups/:groupId`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -260,7 +260,7 @@ Deletes a contact group and all its contacts.
 
 Adds new contacts to an existing group.
 
-**Endpoint:** `POST /api/v1/contacts/groups/:groupId/contacts`
+**Endpoint:** `POST {{baseUrl}}/contacts/groups/:groupId/contacts`
 
 **Authentication:** Bearer Token + Client Credentials
 

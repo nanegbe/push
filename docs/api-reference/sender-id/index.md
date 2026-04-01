@@ -14,7 +14,7 @@ The Sender ID is the identity that appears as the sender of your messages. This 
 
 Creates a new sender ID for your messaging campaigns.
 
-**Endpoint:** `POST /api/v1/sender-id`
+**Endpoint:** `POST {{baseUrl}}/sender-id`
 
 **Authentication:** Bearer Token + Client Credentials
 

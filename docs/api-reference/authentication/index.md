@@ -14,7 +14,7 @@ The Authentication section covers endpoints for creating API clients, logging in
 
 Creates a new API client with credentials.
 
-**Endpoint:** `POST /api/v1/api-clients`
+**Endpoint:** `POST {{baseUrl}}/api-clients`
 
 **Authentication:** None (Public endpoint)
 
@@ -72,7 +72,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/api-clients \
 
 Authenticates a user and returns an access token.
 
-**Endpoint:** `POST /api/v1/auth/sso-login`
+**Endpoint:** `POST {{baseUrl}}/auth/sso-login`
 
 **Authentication:** None (Login endpoint)
 
@@ -124,7 +124,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/auth/sso-login \
 
 Generates an API key for programmatic access.
 
-**Endpoint:** `POST /api/v1/api-keys`
+**Endpoint:** `POST {{baseUrl}}/api-keys`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -160,7 +160,7 @@ Generates an API key for programmatic access.
 
 Retrieves the current API key.
 
-**Endpoint:** `GET /api/v1/api-keys`
+**Endpoint:** `GET {{baseUrl}}/api-keys`
 
 **Authentication:** Bearer Token + Client Credentials
 

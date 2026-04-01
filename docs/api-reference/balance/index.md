@@ -14,7 +14,7 @@ Manage your account balance and view transaction history. This section covers ch
 
 Retrieves the current account balance.
 
-**Endpoint:** `GET /api/v1/balance`
+**Endpoint:** `GET {{baseUrl}}/balance`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -64,7 +64,7 @@ Retrieves the current account balance.
 
 Initiates a balance top-up via payment gateway.
 
-**Endpoint:** `POST /api/v1/balance/top-up`
+**Endpoint:** `POST {{baseUrl}}/balance/top-up`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -135,7 +135,7 @@ The API integrates with payment gateways like Paystack. After successful payment
 
 Retrieves transaction history for the account.
 
-**Endpoint:** `GET /api/v1/balance/transactions`
+**Endpoint:** `GET {{baseUrl}}/balance/transactions`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -205,7 +205,7 @@ Retrieves transaction history for the account.
 
 Retrieves detailed information about a specific transaction.
 
-**Endpoint:** `GET /api/v1/balance/transactions/:transactionId`
+**Endpoint:** `GET {{baseUrl}}/balance/transactions/:transactionId`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -248,7 +248,7 @@ Retrieves detailed information about a specific transaction.
 
 Sets up automatic low balance notifications.
 
-**Endpoint:** `POST /api/v1/balance/alerts`
+**Endpoint:** `POST {{baseUrl}}/balance/alerts`
 
 **Authentication:** Bearer Token + Client Credentials
 

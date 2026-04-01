@@ -15,7 +15,7 @@ Send and manage SMS messages. This section covers sending individual messages, s
 
 Sends an SMS message to one or more recipients.
 
-**Endpoint:** `POST /api/v1/sms/send`
+**Endpoint:** `POST {{baseUrl}}/sms/send`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -80,7 +80,7 @@ Sends an SMS message to one or more recipients.
 
 Sends the same message to multiple phone numbers.
 
-**Endpoint:** `POST /api/v1/sms/send`
+**Endpoint:** `POST {{baseUrl}}/sms/send`
 
 **Request Body:**
 <ApiTerminal 
@@ -102,7 +102,7 @@ Sends the same message to multiple phone numbers.
 
 Resends a previously sent SMS using its reference ID.
 
-**Endpoint:** `POST /api/v1/sms/resend`
+**Endpoint:** `POST {{baseUrl}}/sms/resend`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -156,7 +156,7 @@ Content-Type: application/json
 
 Calculates the estimated cost for sending an SMS message without actually sending it.
 
-**Endpoint:** `POST /api/v1/sms/estimate`
+**Endpoint:** `POST {{baseUrl}}/sms/estimate`
 
 **Authentication:** Bearer Token
 
@@ -206,7 +206,7 @@ Calculates the estimated cost for sending an SMS message without actually sendin
 
 Resends all failed or pending messages for a specific campaign.
 
-**Endpoint:** `POST /api/v1/sms/resend-by-campaign/:campaignId`
+**Endpoint:** `POST {{baseUrl}}/sms/resend-by-campaign/:campaignId`
 
 **Authentication:** Bearer Token
 
@@ -233,7 +233,7 @@ Resends all failed or pending messages for a specific campaign.
 
 Schedules an SMS message to be sent at a future date and time.
 
-**Endpoint:** `POST /api/v1/sms/schedule`
+**Endpoint:** `POST {{baseUrl}}/sms/schedule`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -296,7 +296,7 @@ Schedules an SMS message to be sent at a future date and time.
 
 Sends an SMS message to all contacts in a specific group.
 
-**Endpoint:** `POST /api/v1/sms/send-to-group`
+**Endpoint:** `POST {{baseUrl}}/sms/send-to-group`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -363,7 +363,7 @@ Sends an SMS message to all contacts in a specific group.
 
 Retrieves the delivery status of a sent SMS message.
 
-**Endpoint:** `GET /api/v1/sms/status/:reference`
+**Endpoint:** `GET {{baseUrl}}/sms/status/:reference`
 
 **Authentication:** Bearer Token + Client Credentials
 
@@ -417,7 +417,7 @@ Retrieves the delivery status of a sent SMS message.
 
 Cancels a scheduled SMS before it's sent.
 
-**Endpoint:** `DELETE /api/v1/sms/schedule/:scheduledId`
+**Endpoint:** `DELETE {{baseUrl}}/sms/schedule/:scheduledId`
 
 **Authentication:** Bearer Token + Client Credentials
 
