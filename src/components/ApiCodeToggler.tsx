@@ -9,6 +9,7 @@ interface ApiCodeTogglerProps {
     token?: string;
     urlBase?: string;
     label?: string;
+    isFormData?: boolean;
 }
 
 type Language = 'curl' | 'python' | 'node' | 'php';
@@ -22,7 +23,8 @@ export default function ApiCodeToggler({
     body,
     token = DEFAULT_TOKEN,
     urlBase = DEFAULT_URL_BASE,
-    label = "AUTHENTICATED REQUEST"
+    label = "AUTHENTICATED REQUEST",
+    isFormData = false
 }: ApiCodeTogglerProps) {
     const [lang, setLang] = useState<Language>('curl');
     const [copied, setCopied] = useState(false);
@@ -30,19 +32,35 @@ export default function ApiCodeToggler({
     const fullUrl = `${urlBase}${endpoint}`;
 
     const snippets = useMemo(() => {
-        const bodyStr = body ? JSON.stringify(body, null, 2) : null;
-        const bodyStrPython = body ? JSON.stringify(body, null, 4) : null;
+        let curl = `curl -X ${method} ${fullUrl} \\\n  -H "Authorization: Bearer ${token}"`;
 
-        const curl = `curl -X ${method} ${fullUrl} \\\n  -H "Authorization: Bearer ${token}" \\\n  -H "Content-Type: application/json"${bodyStr ? ` \\\n  -d '${bodyStr}'` : ''}`;
+        if (isFormData) {
+            if (body) {
+                Object.entries(body).forEach(([key, value]) => {
+                    curl += ` \\\n  -F "${key}=${value}"`;
+                });
+            }
+        } else {
+            curl += ` \\\n  -H "Content-Type: application/json"`;
+            if (body) {
+                curl += ` \\\n  -d '${JSON.stringify(body, null, 2)}'`;
+            }
+        }
 
-        const python = `import requests\n\nurl = "${fullUrl}"\nheaders = {\n    "Authorization": "Bearer ${token}",\n    "Content-Type": "application/json"\n}\n${body ? `payload = ${bodyStrPython}\n\n` : ''}response = requests.${method.toLowerCase()}(url, headers=headers${body ? ', json=payload' : ''})\nprint(response.json())`;
+        const python = isFormData
+            ? `import requests\n\nurl = "${fullUrl}"\nheaders = {\n    "Authorization": "Bearer ${token}"\n}\nfiles = ${JSON.stringify(body, null, 4)}\n\nresponse = requests.${method.toLowerCase()}(url, headers=headers, files=files)\nprint(response.json())`
+            : `import requests\n\nurl = "${fullUrl}"\nheaders = {\n    "Authorization": "Bearer ${token}",\n    "Content-Type": "application/json"\n}\n${body ? `payload = ${JSON.stringify(body, null, 4)}\n\n` : ''}response = requests.${method.toLowerCase()}(url, headers=headers${body ? ', json=payload' : ''})\nprint(response.json())`;
 
-        const node = `const response = await fetch(\n  "${fullUrl}",\n  {\n    method: "${method}",\n    headers: {\n      "Authorization": \`Bearer ${token}\`,\n      "Content-Type": "application/json"\n    }${body ? `,\n    body: JSON.stringify(${JSON.stringify(body, null, 6).trim()})` : ''}\n  }\n);\n\nconst data = await response.json();\nconsole.log(data);`;
+        const node = isFormData
+            ? `const formData = new FormData();\n${body ? Object.entries(body).map(([k, v]) => `formData.append("${k}", "${v}");`).join('\n') : ''}\n\nconst response = await fetch(\n  "${fullUrl}",\n  {\n    method: "${method}",\n    headers: {\n      "Authorization": \`Bearer ${token}\`\n    },\n    body: formData\n  }\n);\n\nconst data = await response.json();\nconsole.log(data);`
+            : `const response = await fetch(\n  "${fullUrl}",\n  {\n    method: "${method}",\n    headers: {\n      "Authorization": \`Bearer ${token}\`,\n      "Content-Type": "application/json"\n    }${body ? `,\n    body: JSON.stringify(${JSON.stringify(body, null, 6).trim()})` : ''}\n  }\n);\n\nconst data = await response.json();\nconsole.log(data);`;
 
-        const php = `<?php\n\n$ch = curl_init();\n\ncurl_setopt_array($ch, [\n  CURLOPT_URL => "${fullUrl}",\n  CURLOPT_RETURNTRANSFER => true,\n  CURLOPT_CUSTOMREQUEST => "${method}",\n  CURLOPT_HTTPHEADER => [\n    "Authorization: Bearer ${token}",\n    "Content-Type: application/json"\n  ]${body ? `,\n  CURLOPT_POSTFIELDS => json_encode(${JSON.stringify(body, null, 4).trim()})` : ''}\n]);\n\n$result = curl_exec($ch);\ncurl_close($ch);\necho $result;`;
+        const php = isFormData
+            ? `<?php\n\n$ch = curl_init();\n\ncurl_setopt_array($ch, [\n  CURLOPT_URL => "${fullUrl}",\n  CURLOPT_RETURNTRANSFER => true,\n  CURLOPT_CUSTOMREQUEST => "${method}",\n  CURLOPT_HTTPHEADER => [\n    "Authorization: Bearer ${token}"\n  ],\n  CURLOPT_POSTFIELDS => [\n${body ? Object.entries(body).map(([k, v]) => `    "${k}" => "${v}"`).join(',\n') : ''}\n  ]\n]);\n\n$result = curl_exec($ch);\ncurl_close($ch);\necho $result;`
+            : `<?php\n\n$ch = curl_init();\n\ncurl_setopt_array($ch, [\n  CURLOPT_URL => "${fullUrl}",\n  CURLOPT_RETURNTRANSFER => true,\n  CURLOPT_CUSTOMREQUEST => "${method}",\n  CURLOPT_HTTPHEADER => [\n    "Authorization: Bearer ${token}",\n    "Content-Type: application/json"\n  ]${body ? `,\n  CURLOPT_POSTFIELDS => json_encode(${JSON.stringify(body, null, 4).trim()})` : ''}\n]);\n\n$result = curl_exec($ch);\ncurl_close($ch);\necho $result;`;
 
         return { curl, python, node, php };
-    }, [method, fullUrl, body, token]);
+    }, [method, fullUrl, body, token, isFormData]);
 
     const handleCopy = useCallback(() => {
         navigator.clipboard.writeText(snippets[lang]).then(() => {

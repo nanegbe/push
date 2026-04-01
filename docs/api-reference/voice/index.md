@@ -2,6 +2,10 @@
 sidebar_position: 7
 ---
 
+import ApiCodeToggler from '@site/src/components/ApiCodeToggler';
+import ApiTerminal from '@site/src/components/ApiTerminal';
+
+
 # Voice
 
 Send voice messages and make automated calls. This section covers uploading voice files, initiating calls, scheduling, and group calling.
@@ -17,17 +21,18 @@ Uploads an audio file to be used for voice messages.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-
-
-Content-Type: multipart/form-data
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: multipart/form-data`} 
+/>
 
 **Body (Form Data):**
-```
-file: [Audio file]
-```
+<ApiTerminal 
+  title="BODY" 
+  language="text" 
+  code={`file: [Audio file]`} 
+/>
 
 ### Supported Formats
 
@@ -49,32 +54,29 @@ file: [Audio file]
 **Status Code:** `201 Created`
 
 **Headers:**
-```
-X-Powered-By: Express
-X-RateLimit-Limit: 60
-X-RateLimit-Remaining: 59
-X-RateLimit-Reset: 60
-Content-Type: application/json; charset=utf-8
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`X-Powered-By: Express\nX-RateLimit-Limit: 60\nX-RateLimit-Remaining: 59\nX-RateLimit-Reset: 60\nContent-Type: application/json; charset=utf-8`} 
+/>
 
 **Body:**
-```json
-{
-  "status": 200,
-  "message": "Successfully uploaded file",
-  "data": {
-    "fileId": "2102887ea0454c68f339f6f479da0451d"
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "status": 200,\n  "message": "Successfully uploaded file",\n  "data": {\n    "fileId": "2102887ea0454c68f339f6f479da0451d"\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/files/upload \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -F "file=@/path/to/voice-message.mp3"
-```
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/files/upload" 
+  isFormData={true}
+  body={{
+    "file": "@ /path/to/voice-message.mp3"
+  }}
+/>
 
 ---
 
@@ -89,18 +91,18 @@ Initiates a voice call to one or more recipients with a pre-recorded audio messa
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "recipients": ["0547071660"],
-  "audioFileName": "2102887ea0454c68f339f6f479da0451d"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "recipients": ["0547071660"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
+/>
 
 ### Parameters
 
@@ -114,31 +116,22 @@ Content-Type: application/json
 **Status Code:** `201 Created`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": [
-    {
-      "phoneNumber": "0547071660",
-      "reference": "0327df6b-1c83-45d3-a918-18561b57c36e"
-    }
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "0547071660",\n      "reference": "0327df6b-1c83-45d3-a918-18561b57c36e"\n    }\n  ]\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/calls/initiate \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-
-  -H "Content-Type: application/json" \
-  -d '{
-  "recipients": ["23320*******"],
-  "audioFileName": "UPLOADED_FILE_ID"
-}'
-```
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/calls/initiate" 
+  body={{
+    "recipients": ["23320*******"],
+    "audioFileName": "UPLOADED_FILE_ID"
+  }}
+/>
 
 ---
 
@@ -149,33 +142,18 @@ Sends the same voice message to multiple phone numbers.
 **Endpoint:** `POST /api/v1/calls/initiate`
 
 **Request Body:**
-```json
-{
-  "recipients": ["0547071660", "0500318982", "0244123456"],
-  "audioFileName": "2102887ea0454c68f339f6f479da0451d"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "recipients": ["0547071660", "0500318982", "0244123456"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
+/>
 
 **Response:**
-```json
-{
-  "message": "Successful",
-  "data": [
-    {
-      "phoneNumber": "0547071660",
-      "reference": "voice-ref-001"
-    },
-    {
-      "phoneNumber": "0500318982",
-      "reference": "voice-ref-002"
-    },
-    {
-      "phoneNumber": "0244123456",
-      "reference": "voice-ref-003"
-    }
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "0547071660",\n      "reference": "voice-ref-001"\n    },\n    {\n      "phoneNumber": "0500318982",\n      "reference": "voice-ref-002"\n    },\n    {\n      "phoneNumber": "0244123456",\n      "reference": "voice-ref-003"\n    }\n  ]\n}`} 
+/>
 
 ---
 
@@ -190,19 +168,18 @@ Resends a previously sent voice call using its reference ID.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "references": [
-    "89140c53-a027-4492-90ec-41a1206c2b51"
-  ]
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "references": [\n    "89140c53-a027-4492-90ec-41a1206c2b51"\n  ]\n}`} 
+/>
 
 ### Parameters
 
@@ -215,30 +192,23 @@ Content-Type: application/json
 **Status Code:** `201 Created`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": [
-    {
-      "reference": "89140c53-a027-4492-90ec-41a1206c2b51",
-      "phoneNumber": "0547071660"
-    }
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "reference": "89140c53-a027-4492-90ec-41a1206c2b51",\n      "phoneNumber": "0547071660"\n    }\n  ]\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/calls/resend \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/calls/resend" 
+  body={{
     "references": [
       "89140c53-a027-4492-90ec-41a1206c2b51"
     ]
-  }'
-```
+  }}
+/>
 
 ---
 
@@ -253,47 +223,41 @@ Calculates the estimated cost for initiating a voice call without actually makin
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "recipients": ["0547071660"],
-  "audioFileName": "2102887ea0454c68f339f6f479da0451d"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "recipients": ["0547071660"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
+/>
 
 ### Response
 
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": {
-    "totalCost": 0.05,
-    "currency": "GHS",
-    "recipientCount": 1
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": {\n    "totalCost": 0.05,\n    "currency": "GHS",\n    "recipientCount": 1\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/calls/estimate \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/calls/estimate" 
+  body={{
     "groupIds": ["group-id-1"],
     "recipients": ["0547071660"],
     "audioFileName": "2102887ea0454c68f339f6f479da0451d"
-  }'
-```
+  }}
+/>
 
 ---
 
@@ -316,15 +280,11 @@ Resends all failed or pending voice calls for a specific campaign.
 **Status Code:** `201 Created`
 
 **Body:**
-```json
-{
-  "message": "Successfully initiated resend for campaign",
-  "data": {
-    "campaignId": "vcmp_123abc456def",
-    "resendCount": 8
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully initiated resend for campaign",\n  "data": {\n    "campaignId": "vcmp_123abc456def",\n    "resendCount": 8\n  }\n}`} 
+/>
 
 ---
 
@@ -339,21 +299,18 @@ Schedules a voice call to be made at a future date and time.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "recipients": [
-    "0547071660"
-  ],
-  "audioFileName": "d306922bdebf77bbbd8793db93492e38",
-  "schedule": "2026-02-13T12:25:00.000Z"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "recipients": [\n    "0547071660"\n  ],\n  "audioFileName": "d306922bdebf77bbbd8793db93492e38",\n  "schedule": "2026-02-13T12:25:00.000Z"\n}`} 
+/>
 
 ### Parameters
 
@@ -368,32 +325,26 @@ Content-Type: application/json
 **Status Code:** `201 Created`
 
 **Body:**
-```json
-{
-  "message": "Successfully scheduled voice call",
-  "data": {
-    "scheduledId": "vsch_abc123def456",
-    "scheduledFor": "2026-02-13T12:25:00.000Z",
-    "recipientCount": 1
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully scheduled voice call",\n  "data": {\n    "scheduledId": "vsch_abc123def456",\n    "scheduledFor": "2026-02-13T12:25:00.000Z",\n    "recipientCount": 1\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/calls/schedule \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/calls/schedule" 
+  body={{
     "groupIds": ["group-id-1"],
     "recipients": [
       "0547071660"
     ],
     "audioFileName": "d306922bdebf77bbbd8793db93492e38",
     "schedule": "2026-02-13T12:25:00.000Z"
-  }'
-```
+  }}
+/>
 
 ---
 
@@ -408,18 +359,18 @@ Sends a voice message to all contacts in a specific group.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
-  "audioFileName": "2102887ea0454c68f339f6f479da0451d"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
+/>
 
 ### Parameters
 
@@ -433,38 +384,22 @@ Content-Type: application/json
 **Status Code:** `201 Created`
 
 **Body:**
-```json
-{
-  "message": "Successfully sent voice message to group",
-  "data": {
-    "totalRecipients": 150,
-    "successfulCalls": 148,
-    "failedCalls": 2,
-    "references": [
-      {
-        "phoneNumber": "0547071660",
-        "reference": "grp-voice-ref-001"
-      },
-      {
-        "phoneNumber": "0500318982",
-        "reference": "grp-voice-ref-002"
-      }
-    ]
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully sent voice message to group",\n  "data": {\n    "totalRecipients": 150,\n    "successfulCalls": 148,\n    "failedCalls": 2,\n    "references": [\n      {\n        "phoneNumber": "0547071660",\n        "reference": "grp-voice-ref-001"\n      },\n      {\n        "phoneNumber": "0500318982",\n        "reference": "grp-voice-ref-002"\n      }\n    ]\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/calls/initiate-to-group \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/calls/initiate-to-group" 
+  body={{
     "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
     "audioFileName": "2102887ea0454c68f339f6f479da0451d"
-  }'
-```
+  }}
+/>
 
 ---
 
@@ -479,19 +414,18 @@ Schedules a voice message to be sent to all contacts in a specific group at a fu
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
-  "audioFileName": "2102887ea0454c68f339f6f479da0451d",
-  "schedule": "2026-02-13T15:00:00.000Z"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d",\n  "schedule": "2026-02-13T15:00:00.000Z"\n}`} 
+/>
 
 ### Parameters
 
@@ -506,29 +440,23 @@ Content-Type: application/json
 **Status Code:** `201 Created`
 
 **Body:**
-```json
-{
-  "message": "Successfully scheduled voice message to group",
-  "data": {
-    "scheduledId": "vgsch_abc123def456",
-    "scheduledFor": "2026-02-13T15:00:00.000Z",
-    "recipientCount": 150
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully scheduled voice message to group",\n  "data": {\n    "scheduledId": "vgsch_abc123def456",\n    "scheduledFor": "2026-02-13T15:00:00.000Z",\n    "recipientCount": 150\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/calls/schedule-to-group \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/calls/schedule-to-group" 
+  body={{
     "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
     "audioFileName": "2102887ea0454c68f339f6f479da0451d",
     "schedule": "2026-02-13T15:00:00.000Z"
-  }'
-```
+  }}
+/>
 
 ---
 
@@ -543,11 +471,11 @@ Retrieves the status of a voice call.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-
-
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>`} 
+/>
 
 ### Path Parameters
 
@@ -560,20 +488,11 @@ Authorization: Bearer <accessToken>
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": {
-    "reference": "0327df6b-1c83-45d3-a918-18561b57c36e",
-    "phoneNumber": "0547071660",
-    "status": "COMPLETED",
-    "duration": 45,
-    "initiatedAt": "2026-02-13T11:52:39.000Z",
-    "answeredAt": "2026-02-13T11:52:45.000Z",
-    "completedAt": "2026-02-13T11:53:30.000Z"
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": {\n    "reference": "0327df6b-1c83-45d3-a918-18561b57c36e",\n    "phoneNumber": "0547071660",\n    "status": "COMPLETED",\n    "duration": 45,\n    "initiatedAt": "2026-02-13T11:52:39.000Z",\n    "answeredAt": "2026-02-13T11:52:45.000Z",\n    "completedAt": "2026-02-13T11:53:30.000Z"\n  }\n}`} 
+/>
 
 ### Call Status Values
 
@@ -589,11 +508,10 @@ Authorization: Bearer <accessToken>
 
 ### Example
 
-```bash
-curl -X GET https://messaging-api.esoko.com/api/v1/calls/status/0327df6b-1c83-45d3-a918-18561b57c36e \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  
-```
+<ApiCodeToggler 
+  method="GET" 
+  endpoint="/api/v1/calls/status/0327df6b-1c83-45d3-a918-18561b57c36e" 
+/>
 
 ---
 
@@ -608,85 +526,75 @@ Cancels a scheduled voice call before it's made.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-
-
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>`} 
+/>
 
 ### Response
 
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successfully cancelled scheduled voice call"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully cancelled scheduled voice call"\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X DELETE https://messaging-api.esoko.com/api/v1/calls/schedule/vsch_abc123def456 \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
- 
-```
+<ApiCodeToggler 
+  method="DELETE" 
+  endpoint="/api/v1/calls/schedule/vsch_abc123def456" 
+/>
 
 ---
 
 ## Error Responses
 
 ### File Not Found (404 Not Found)
-```json
-{
-  "message": "Audio file not found"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Audio file not found"\n}`} 
+/>
 
 ### Invalid Audio Format (400 Bad Request)
-```json
-{
-  "message": "Invalid audio file format",
-  "errors": [
-    "Supported formats: MP3, WAV, M4A"
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid audio file format",\n  "errors": [\n    "Supported formats: MP3, WAV, M4A"\n  ]\n}`} 
+/>
 
 ### File Too Large (400 Bad Request)
-```json
-{
-  "message": "File size exceeds maximum limit",
-  "errors": [
-    "Maximum file size is 10 MB"
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "File size exceeds maximum limit",\n  "errors": [\n    "Maximum file size is 10 MB"\n  ]\n}`} 
+/>
 
 ### Invalid Phone Number (400 Bad Request)
-```json
-{
-  "message": "Invalid phone number format",
-  "errors": [
-    "Phone number must be valid"
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid phone number format",\n  "errors": [\n    "Phone number must be valid"\n  ]\n}`} 
+/>
 
 ### Scheduled Time in Past (400 Bad Request)
-```json
-{
-  "message": "Schedule time must be in the future"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Schedule time must be in the future"\n}`} 
+/>
 
 ### Insufficient Balance (402 Payment Required)
-```json
-{
-  "message": "Insufficient balance to make calls"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Insufficient balance to make calls"\n}`} 
+/>
 
 ---
 
