@@ -2,6 +2,10 @@
 sidebar_position: 2
 ---
 
+import ApiCodeToggler from '@site/src/components/ApiCodeToggler';
+import ApiTerminal from '@site/src/components/ApiTerminal';
+
+
 # Quick Start Guide
 
 Get up and running with the Push Messaging API in minutes. This guide will walk you through the essential steps to start sending messages.
@@ -43,26 +47,21 @@ curl -X POST https://messaging-api.esoko.com/api/v1/api-clients \
 
 Login to get your access token:
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/auth/sso-login \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/auth/sso-login" 
+  body={{
     "email": "your-email@example.com",
     "password": "your-password"
-  }'
-```
+  }}
+/>
 
 **Response:**
-```json
-{
-  "message": "Login successful",
-  "data": {
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-    "refreshToken": "dGhpcyBpcyBhIHJlZnJlc2ggdG9rZW4...",
-    "expiresIn": 3600
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Login successful",\n  "data": {\n    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",\n    "refreshToken": "dGhpcyBpcyBhIHJlZnJlc2ggdG9rZW4...",\n    "expiresIn": 3600\n  }\n}`} 
+/>
 
 Save the `accessToken` - you'll need it for all authenticated requests.
 
@@ -70,21 +69,20 @@ Save the `accessToken` - you'll need it for all authenticated requests.
 
 Register a sender ID for your messages:
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sender-id \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sender-id" 
+  body={{
     "name": "MYCOMPANY"
-  }'
-```
+  }}
+/>
 
 **Response:**
-```json
-{
-  "message": "Successfully created sender id"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully created sender id"\n}`} 
+/>
 
 ✅ Your sender ID will be reviewed and activated within 24-48 hours.
 
@@ -92,29 +90,22 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sender-id \
 
 Once your sender ID is approved, send a test message:
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sms/send" 
+  body={{
     "recipients": ["+23354*******"],
     "message": "Hello from Push Messaging API!",
     "sender": "MYCOMPANY"
-  }'
-```
+  }}
+/>
 
 **Response:**
-```json
-{
-  "message": "Successful",
-  "data": [
-    {
-      "phoneNumber": "+23354*******",
-      "reference": "4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef"
-    }
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "+23354*******",\n      "reference": "4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef"\n    }\n  ]\n}`} 
+/>
 
 🎉 Congratulations! You've successfully sent your first SMS message.
 
@@ -122,23 +113,17 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
 
 Monitor your account balance:
 
-```bash
-curl -X GET https://messaging-api.esoko.com/api/v1/balance \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "x-account-id: YOUR_ACCOUNT_ID"
-```
+<ApiCodeToggler 
+  method="GET" 
+  endpoint="/api/v1/balance" 
+/>
 
 **Response:**
-```json
-{
-  "message": "Successful",
-  "data": {
-    "balance": "150.50",
-    "currency": "GHS",
-    "lastUpdated": "2026-02-16T08:46:52.595Z"
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": {\n    "balance": "150.50",\n    "currency": "GHS",\n    "lastUpdated": "2026-02-16T08:46:52.595Z"\n  }\n}`} 
+/>
 
 ## Next Steps
 
@@ -146,11 +131,10 @@ Now that you've mastered the basics, explore more features:
 
 ### Send Bulk Messages
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sms/send" 
+  body={{
     "recipients": [
       "+23354*******",
       "+23350*******",
@@ -158,107 +142,105 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
     ],
     "message": "Bulk message to multiple recipients",
     "sender": "MYCOMPANY"
-  }'
-```
+  }}
+/>
 
 ### Schedule a Message
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sms/schedule \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sms/schedule" 
+  body={{
     "recipients": ["+23354*******"],
     "message": "Scheduled message",
     "sender": "MYCOMPANY",
     "schedule": "2026-02-20T09:00:00.000Z"
-  }'
-```
+  }}
+/>
 
 ### Send Voice Message
 
-```bash
-# 1. Upload voice file
-curl -X POST https://messaging-api.esoko.com/api/v1/files/upload \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -F "file=@voice-message.mp3"
-
-# 2. Send voice message
-curl -X POST https://messaging-api.esoko.com/api/v1/calls/initiate \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/files/upload" 
+  isFormData={true}
+  body={{
+    "file": "@ voice-message.mp3"
+  }}
+/>
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/calls/initiate" 
+  body={{
     "recipients": ["0547071660"],
     "audioFileName": "UPLOADED_FILE_ID"
-  }'
-```
+  }}
+/>
 
 ### Create Contact Group
 
 Upload an Excel or CSV file with contacts:
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/contacts/groups \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  -F "name=Marketing List" \
-  -F "file=@contacts.xlsx"
-```
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/contacts/groups" 
+  isFormData={true}
+  body={{
+    "name": "Marketing List",
+    "file": "@ contacts.xlsx"
+  }}
+/>
 
 ## Authentication Headers Reference
 
 All authenticated requests require these headers:
 
-```
-Authorization: Bearer <accessToken>
-
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>`} 
+/>
 
 Optional for multi-account management:
-```
-x-account-id: <accountId>
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`x-account-id: <accountId>`} 
+/>
 
 ## Common Use Cases
 
 ### 1. Transactional Messages
 Send OTPs, order confirmations, alerts:
-```json
-{
-  "recipients": ["+23354*******"],
-  "message": "Your OTP is 123456. Valid for 10 minutes.",
-  "sender": "MYAPP"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "recipients": ["+23354*******"],\n  "message": "Your OTP is 123456. Valid for 10 minutes.",\n  "sender": "MYAPP"\n}`} 
+/>
 
 ### 2. Marketing Campaigns
 Send promotional messages to contact groups:
-```json
-{
-  "groupId": "your-group-id",
-  "message": "Special offer! Get 20% off this weekend.",
-  "sender": "MYSTORE"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "groupId": "your-group-id",\n  "message": "Special offer! Get 20% off this weekend.",\n  "sender": "MYSTORE"\n}`} 
+/>
 
 ### 3. Appointment Reminders
 Schedule reminder messages:
-```json
-{
-  "recipients": ["+23354*******"],
-  "message": "Reminder: Your appointment is tomorrow at 2 PM.",
-  "sender": "CLINIC",
-  "schedule": "2026-02-20T08:00:00.000Z"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "recipients": ["+23354*******"],\n  "message": "Reminder: Your appointment is tomorrow at 2 PM.",\n  "sender": "CLINIC",\n  "schedule": "2026-02-20T08:00:00.000Z"\n}`} 
+/>
 
 ### 4. Emergency Notifications
 Use voice calls for urgent alerts:
-```json
-{
-  "recipients": ["0547071660", "0500318982"],
-  "audioFileName": "emergency-alert-file-id"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "recipients": ["0547071660", "0500318982"],\n  "audioFileName": "emergency-alert-file-id"\n}`} 
+/>
 
 ## Error Handling
 
