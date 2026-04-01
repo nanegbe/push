@@ -104,29 +104,29 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'API Reference',
-          items: [
-            {
-              label: 'Getting Started',
-              to: '/docs/api-reference',
-            },
-            {
-              label: 'Authentication',
-              to: '/docs/api-reference/authentication',
-            },
-            {
-              label: 'SMS',
-              to: '/docs/api-reference/sms',
-            },
-            {
-              label: 'Voice',
-              to: '/docs/api-reference/voice',
-            },
-          ],
-        },
+      style: 'light',
+      // links: [
+      //   {
+      //     title: 'API Reference',
+      //     items: [
+      //       {
+      //         label: 'Getting Started',
+      //         to: '/docs/api-reference',
+      //       },
+      //       {
+      //         label: 'Authentication',
+      //         to: '/docs/api-reference/authentication',
+      //       },
+      //       {
+      //         label: 'SMS',
+      //         to: '/docs/api-reference/sms',
+      //       },
+      //       {
+      //         label: 'Voice',
+      //         to: '/docs/api-reference/voice',
+      //       },
+      //     ],
+      //   },
         // {
         //   title: 'Community',
         //   items: [
@@ -157,7 +157,7 @@ const config: Config = {
         //     },
         //   ],
         // },
-      ],
+      // ],
       copyright: `Copyright © ${new Date().getFullYear()} Push Messaging API.`,
     },
     prism: {
