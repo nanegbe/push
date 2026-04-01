@@ -93,7 +93,7 @@ Explore code examples in multiple languages and download SDKs from our **[GitHub
 - Check **code examples** for implementation details
 - Review **error codes** when troubleshooting
 
-## <IconWrapper><WrenchIcon /></IconWrapper> API Basics
+<!-- ## <IconWrapper><WrenchIcon /></IconWrapper> API Basics
 
 ### Base URL
 ```
@@ -123,7 +123,7 @@ Content-Type: application/json
   "data": { ... },
   "meta": { ... } // For paginated responses
 }
-```
+``` -->
 
 ### HTTP Methods
 - **GET** - Retrieve resources

@@ -10,7 +10,7 @@ Get up and running with the Push Messaging API in minutes. This guide will walk 
 
 Before you begin, ensure you have:
 
-- A valid account with the <a href="https://app-push.esoko.com/" target="_blank" rel="noopener noreferrer" class="">Messaging service</a>
+- A valid account with the <a href="https://push-sso.esoko.com/en/signup/" target="_blank" rel="noopener noreferrer" class="">Messaging service</a>
 - Basic understanding of REST APIs
 - Tools like cURL, Postman, or HTTP client libraries
 
