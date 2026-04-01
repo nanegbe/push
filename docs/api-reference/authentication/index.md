@@ -2,6 +2,10 @@
 sidebar_position: 2
 ---
 
+import ApiCodeToggler from '@site/src/components/ApiCodeToggler';
+import ApiTerminal from '@site/src/components/ApiTerminal';
+
+
 # Authentication
 
 The Authentication section covers endpoints for creating API clients, logging in via SSO, and generating API keys.
@@ -127,36 +131,32 @@ Generates an API key for programmatic access.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 ### Response
 
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "API key generated successfully",
-  "data": {
-    "apiKey": "sk_live_abc123def456..."
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "API key generated successfully",\n  "data": {\n    "apiKey": "sk_live_abc123def456..."\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/api-keys \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/api-keys" 
+  body={{
     "name": "My Integration"
-  }'
-```
+  }}
+/>
 
 Retrieves the current API key.
 
@@ -167,39 +167,32 @@ Retrieves the current API key.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>`} 
+/>
 
 ### Response
 
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "API key retrieved successfully",
-  "data": {
-    "apiKey": "sk_live_abc123def456...",
-    "createdAt": "2026-02-12T10:30:00.000Z"
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "API key retrieved successfully",\n  "data": {\n    "apiKey": "sk_live_abc123def456...",\n    "createdAt": "2026-02-12T10:30:00.000Z"\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X GET https://messaging-api.esoko.com/api/v1/api-keys \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="GET" 
+  endpoint="/api/v1/api-keys" 
+  body={{
     "name": "My Integration"
-  }'
-
-  
-
-```
+  }}
+/>
 
 ---
 
@@ -229,22 +222,22 @@ Here's the complete authentication flow:
 ## Error Responses
 
 ### 401 Unauthorized
-```json
-{
-  "message": "Invalid credentials"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid credentials"\n}`} 
+/>
 
 ### 403 Forbidden
-```json
-{
-  "message": "Access token expired"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Access token expired"\n}`} 
+/>
 
 ### 429 Too Many Requests
-```json
-{
-  "message": "Rate limit exceeded"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Rate limit exceeded"\n}`} 
+/>
