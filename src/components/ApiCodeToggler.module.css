@@ -4,10 +4,11 @@
 }
 
 .panel {
-    background: #1e2229;
+    background: #ffffff;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid #d1d5da;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .topbar {
@@ -15,15 +16,15 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 16px;
-    background: #161a20;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #f6f8fa;
+    border-bottom: 1px solid #d1d5da;
 }
 
 .label {
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.08em;
-    color: #9aa0ab;
+    color: #586069;
     text-transform: uppercase;
 }
 
@@ -41,9 +42,9 @@
 
 .langSelect select {
     appearance: none;
-    background: #2a2f3a;
-    border: 0.5px solid rgba(255, 255, 255, 0.15);
-    color: #e4e7ec;
+    background: #fafbfc;
+    border: 1px solid #d1d5da;
+    color: #24292e;
     font-size: 13px;
     font-weight: 500;
     font-family: inherit;
@@ -51,24 +52,26 @@
     border-radius: 6px;
     cursor: pointer;
     outline: none;
+    transition: background 0.15s, border-color 0.15s;
 }
 
 .langSelect select:hover {
-    border-color: rgba(255, 255, 255, 0.3);
+    background: #eff3f6;
+    border-color: #0366d6;
 }
 
 .chevron {
     position: absolute;
     right: 8px;
     pointer-events: none;
-    color: #9aa0ab;
+    color: #586069;
     font-size: 10px;
 }
 
 .iconBtn {
-    background: #2a2f3a;
-    border: 0.5px solid rgba(255, 255, 255, 0.15);
-    color: #9aa0ab;
+    background: #fafbfc;
+    border: 1px solid #d1d5da;
+    color: #586069;
     border-radius: 6px;
     width: 30px;
     height: 30px;
@@ -77,18 +80,20 @@
     justify-content: center;
     cursor: pointer;
     font-size: 13px;
-    transition: background 0.15s, color 0.15s;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
     padding: 0;
 }
 
 .iconBtn:hover {
-    background: #343b49;
-    color: #e4e7ec;
+    background: #eff3f6;
+    color: #24292e;
+    border-color: #0366d6;
 }
 
 .iconBtn.copied {
-    color: #4ade80;
-    border-color: rgba(74, 222, 128, 0.3);
+    color: #28a745;
+    border-color: #28a745;
+    background: #f0fff4;
 }
 
 .codeBlock {
@@ -110,7 +115,7 @@
     padding: 1px 16px;
     font-size: 13px;
     font-family: var(--ifm-font-family-monospace);
-    color: #4a5061;
+    color: #959da5;
     text-align: right;
     user-select: none;
     min-width: 40px;
@@ -122,40 +127,50 @@
     padding: 1px 0;
     font-size: 13px;
     font-family: var(--ifm-font-family-monospace);
-    color: #c9d1d9;
+    color: #24292e;
     white-space: pre;
 }
 
-/* Syntax Highlighting Colors */
+/* Syntax Highlighting Colors (GitHub-inspired Light) */
 .kw {
-    color: #ff79c6;
+    color: #d73a49;
+    /* red */
 }
 
 .url {
-    color: #8be9fd;
+    color: #0366d6;
+    /* blue */
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 .flag {
-    color: #50fa7b;
+    color: #22863a;
+    /* green */
 }
 
 .str {
-    color: #f1fa8c;
+    color: #032f62;
+    /* dark blue */
 }
 
 .cmt {
-    color: #6272a4;
+    color: #6a737d;
+    /* gray */
     font-style: italic;
 }
 
 .var {
-    color: #bd93f9;
+    color: #6f42c1;
+    /* purple */
 }
 
 .fn {
-    color: #50fa7b;
+    color: #6f42c1;
+    /* purple */
 }
 
 .num {
-    color: #ffb86c;
+    color: #005cc5;
+    /* bright blue */
 }
