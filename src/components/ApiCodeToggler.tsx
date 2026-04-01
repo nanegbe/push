@@ -1,124 +1,127 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import styles from './ApiCodeToggler.module.css';
 
-const RECIPIENTS = ["23320*******", "23320*******"];
-const MESSAGE = "Hello to the entire group!";
-const SENDER = "Esoko";
-const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
-const URL = "https://messaging-api.esoko.com/api/v1/sms/send-to-group";
+interface ApiCodeTogglerProps {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    endpoint: string;
+    body?: Record<string, any>;
+    token?: string;
+    urlBase?: string;
+    label?: string;
+}
 
 type Language = 'curl' | 'python' | 'node' | 'php';
 
-interface CodeSnippet {
-    [key: string]: [number | null, string][];
-}
+const DEFAULT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
+const DEFAULT_URL_BASE = "https://messaging-api.esoko.com";
 
-const snippets: CodeSnippet = {
-    curl: [
-        [null, `<span class="${styles.kw}">curl</span> <span class="${styles.flag}">-X</span> POST <span class="${styles.url}">${URL}</span> \\`],
-        [null, `  <span class="${styles.flag}">-H</span> <span class="${styles.str}">"Authorization: Bearer ${TOKEN}"</span> \\`],
-        [null, `  <span class="${styles.flag}">-H</span> <span class="${styles.str}">"Content-Type: application/json"</span> \\`],
-        [null, `  <span class="${styles.flag}">-H</span> <span class="${styles.str}">"Accept: application/json"</span> \\`],
-        [null, `  <span class="${styles.flag}">-d</span> <span class="${styles.str}">'{`],
-        [null, `    <span class="${styles.str}">"recipients"</span>: <span class="${styles.str}">["${RECIPIENTS[0]}", "${RECIPIENTS[1]}"]</span>,`],
-        [null, `    <span class="${styles.str}">"message"</span>: <span class="${styles.str}">"${MESSAGE}"</span>,`],
-        [null, `    <span class="${styles.str}">"sender"</span>: <span class="${styles.str}">"${SENDER}"</span>`],
-        [null, `  <span class="${styles.str}">}'`],
-    ],
-    python: [
-        [null, `<span class="${styles.kw}">import</span> requests`],
-        [null, ``],
-        [null, `<span class="${styles.var}">url</span> = <span class="${styles.str}">"${URL}"</span>`],
-        [null, `<span class="${styles.var}">headers</span> = {`],
-        [null, `    <span class="${styles.str}">"Authorization"</span>: <span class="${styles.str}">"Bearer ${TOKEN}"</span>,`],
-        [null, `    <span class="${styles.str}">"Content-Type"</span>: <span class="${styles.str}">"application/json"</span>`],
-        [null, `}`],
-        [null, `<span class="${styles.var}">payload</span> = {`],
-        [null, `    <span class="${styles.str}">"recipients"</span>: [<span class="${styles.str}">"${RECIPIENTS[0]}"</span>, <span class="${styles.str}">"${RECIPIENTS[1]}"</span>],`],
-        [null, `    <span class="${styles.str}">"message"</span>: <span class="${styles.str}">"${MESSAGE}"</span>,`],
-        [null, `    <span class="${styles.str}">"sender"</span>: <span class="${styles.str}">"${SENDER}"</span>`],
-        [null, `}`],
-        [null, ``],
-        [null, `<span class="${styles.var}">response</span> = requests.<span class="${styles.fn}">post</span>(<span class="${styles.var}">url</span>, headers=<span class="${styles.var}">headers</span>, json=<span class="${styles.var}">payload</span>)`],
-        [null, `<span class="${styles.fn}">print</span>(<span class="${styles.var}">response</span>.<span class="${styles.fn}">json</span>())`],
-    ],
-    node: [
-        [null, `<span class="${styles.kw}">const</span> <span class="${styles.var}">response</span> = <span class="${styles.kw}">await</span> <span class="${styles.fn}">fetch</span>(`],
-        [null, `  <span class="${styles.str}">"${URL}"</span>,`],
-        [null, `  {`],
-        [null, `    <span class="${styles.var}">method</span>: <span class="${styles.str}">"POST"</span>,`],
-        [null, `    <span class="${styles.var}">headers</span>: {`],
-        [null, `      <span class="${styles.str}">"Authorization"</span>: <span class="${styles.str}">\`Bearer ${TOKEN}\`</span>,`],
-        [null, `      <span class="${styles.str}">"Content-Type"</span>: <span class="${styles.str}">"application/json"</span>`],
-        [null, `    },`],
-        [null, `    <span class="${styles.var}">body</span>: <span class="${styles.var}">JSON</span>.<span class="${styles.fn}">stringify</span>({`],
-        [null, `      <span class="${styles.var}">recipients</span>: [<span class="${styles.str}">"${RECIPIENTS[0]}"</span>, <span class="${styles.str}">"${RECIPIENTS[1]}"</span>],`],
-        [null, `      <span class="${styles.var}">message</span>: <span class="${styles.str}">"${MESSAGE}"</span>,`],
-        [null, `      <span class="${styles.var}">sender</span>: <span class="${styles.str}">"${SENDER}"</span>`],
-        [null, `    })`],
-        [null, `  }`],
-        [null, `);`],
-        [null, ``],
-        [null, `<span class="${styles.kw}">const</span> <span class="${styles.var}">data</span> = <span class="${styles.kw}">await</span> <span class="${styles.var}">response</span>.<span class="${styles.fn}">json</span>();`],
-        [null, `<span class="${styles.var}">console</span>.<span class="${styles.fn}">log</span>(<span class="${styles.var}">data</span>);`],
-    ],
-    php: [
-        [null, `<span class="${styles.kw}">&lt;?php</span>`],
-        [null, ``],
-        [null, `<span class="${styles.var}">$ch</span> = <span class="${styles.fn}">curl_init</span>();`],
-        [null, ``],
-        [null, `<span class="${styles.fn}">curl_setopt_array</span>(<span class="${styles.var}">$ch</span>, [`],
-        [null, `  CURLOPT_URL =&gt; <span class="${styles.str}">"${URL}"</span>,`],
-        [null, `  CURLOPT_RETURNTRANSFER =&gt; <span class="${styles.kw}">true</span>,`],
-        [null, `  CURLOPT_POST =&gt; <span class="${styles.kw}">true</span>,`],
-        [null, `  CURLOPT_HTTPHEADER =&gt; [`],
-        [null, `    <span class="${styles.str}">"Authorization: Bearer ${TOKEN}"</span>,`],
-        [null, `    <span class="${styles.str}">"Content-Type: application/json"</span>`],
-        [null, `  ],`],
-        [null, `  CURLOPT_POSTFIELDS =&gt; <span class="${styles.fn}">json_encode</span>([`],
-        [null, `    <span class="${styles.str}">"recipients"</span> =&gt; [<span class="${styles.str}">"${RECIPIENTS[0]}"</span>, <span class="${styles.str}">"${RECIPIENTS[1]}"</span>],`],
-        [null, `    <span class="${styles.str}">"message"</span>   =&gt; <span class="${styles.str}">"${MESSAGE}"</span>,`],
-        [null, `    <span class="${styles.str}">"sender"</span>    =&gt; <span class="${styles.str}">"${SENDER}"</span>`],
-        [null, `  ])`],
-        [null, `]);`],
-        [null, ``],
-        [null, `<span class="${styles.var}">$result</span> = <span class="${styles.fn}">curl_exec</span>(<span class="${styles.var}">$ch</span>);`],
-        [null, `<span class="${styles.fn}">curl_close</span>(<span class="${styles.var}">$ch</span>);`],
-        [null, `<span class="${styles.fn}">echo</span> <span class="${styles.var}">$result</span>;`],
-    ]
+// Simple syntax highlighter that maps to the user's CSS classes
+const highlight = (code: string, lang: Language): string => {
+    let h = code
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+    // Strings
+    h = h.replace(/("(?:\\"|[^"])*")/g, `<span class="${styles.str}">$1</span>`);
+    h = h.replace(/('(?:\\'|[^'])*')/g, `<span class="${styles.str}">$1</span>`);
+    h = h.replace(/(\`(?:\\\`|[^\`])*\`)/g, `<span class="${styles.str}">$1</span>`);
+
+    // Keywords
+    const keywords = lang === 'curl'
+        ? ['curl']
+        : ['import', 'const', 'await', 'let', 'var', 'async', 'function', 'return', 'if', 'else', 'for', 'while', 'new', 'try', 'catch', 'finally', 'true', 'false', 'null', 'undefined'];
+
+    if (lang === 'php') {
+        keywords.push('&lt;?php', 'echo', 'true', 'false');
+    }
+
+    keywords.forEach(kw => {
+        const regex = new RegExp(`\\b${kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'g');
+        h = h.replace(regex, `<span class="${styles.kw}">${kw}</span>`);
+    });
+
+    // Flags (cURL)
+    if (lang === 'curl') {
+        h = h.replace(/(\s)(-[A-Za-z0-9]+)(\s)/g, `$1<span class="${styles.flag}">$2</span>$3`);
+    }
+
+    // URLs
+    h = h.replace(/(https?:\/\/[^\s"']+)/g, `<span class="${styles.url}">$1</span>`);
+
+    // Functions
+    if (lang !== 'curl') {
+        h = h.replace(/\b([a-z_][a-z0-9_]*)\(/gi, `<span class="${styles.fn}">$1</span>(`);
+    }
+
+    // Variables (very basic)
+    if (lang === 'python' || lang === 'php' || lang === 'node') {
+        h = h.replace(/(\$?[a-z_][a-z0-9_]*)\s*=/gi, `<span class="${styles.var}">$1</span> =`);
+    }
+
+    // Numbers
+    h = h.replace(/\b(\d+)\b/g, `<span class="${styles.num}">$1</span>`);
+
+    // Comments
+    if (lang === 'php' || lang === 'node') {
+        h = h.replace(/(\/\/.*)/g, `<span class="${styles.cmt}">$1</span>`);
+    } else if (lang === 'python') {
+        h = h.replace(/(#.*)/g, `<span class="${styles.cmt}">$1</span>`);
+    }
+
+    return h;
 };
 
-const getPlainText = (lang: Language): string => {
-    const map: Record<Language, string> = {
-        curl: `curl -X POST ${URL} \\\n  -H "Authorization: Bearer ${TOKEN}" \\\n  -H "Content-Type: application/json" \\\n  -H "Accept: application/json" \\\n  -d '{\n    "recipients": ["${RECIPIENTS[0]}", "${RECIPIENTS[1]}"],\n    "message": "${MESSAGE}",\n    "sender": "${SENDER}"\n  }'`,
-        python: `import requests\n\nurl = "${URL}"\nheaders = {\n    "Authorization": "Bearer ${TOKEN}",\n    "Content-Type": "application/json"\n}\npayload = {\n    "recipients": ["${RECIPIENTS[0]}", "${RECIPIENTS[1]}"],\n    "message": "${MESSAGE}",\n    "sender": "${SENDER}"\n}\n\nresponse = requests.post(url, headers=headers, json=payload)\nprint(response.json())`,
-        node: `const response = await fetch(\n  "${URL}",\n  {\n    method: "POST",\n    headers: {\n      "Authorization": \`Bearer ${TOKEN}\`,\n      "Content-Type": "application/json"\n    },\n    body: JSON.stringify({\n      recipients: ["${RECIPIENTS[0]}", "${RECIPIENTS[1]}"],\n      message: "${MESSAGE}",\n      sender: "${SENDER}"\n    })\n  }\n);\n\nconst data = await response.json();\nconsole.log(data);`,
-        php: `<?php\n\n$ch = curl_init();\n\ncurl_setopt_array($ch, [\n  CURLOPT_URL => "${URL}",\n  CURLOPT_RETURNTRANSFER => true,\n  CURLOPT_POST => true,\n  CURLOPT_HTTPHEADER => [\n    "Authorization: Bearer ${TOKEN}",\n    "Content-Type: application/json"\n  ],\n  CURLOPT_POSTFIELDS => json_encode([\n    "recipients" => ["${RECIPIENTS[0]}", "${RECIPIENTS[1]}"],\n    "message"   => "${MESSAGE}",\n    "sender"    => "${SENDER}"\n  ])\n]);\n\n$result = curl_exec($ch);\ncurl_close($ch);\necho $result;`
-    };
-    return map[lang];
-};
-
-export default function ApiCodeToggler() {
+export default function ApiCodeToggler({
+    method = 'POST',
+    endpoint,
+    body,
+    token = DEFAULT_TOKEN,
+    urlBase = DEFAULT_URL_BASE,
+    label = "AUTHENTICATED REQUEST"
+}: ApiCodeTogglerProps) {
     const [lang, setLang] = useState<Language>('curl');
     const [copied, setCopied] = useState(false);
 
+    const fullUrl = `${urlBase}${endpoint}`;
+
+    const snippets = useMemo(() => {
+        const bodyStr = body ? JSON.stringify(body, null, 2) : null;
+        const bodyStrPython = body ? JSON.stringify(body, null, 4) : null;
+
+        const curl = `curl -X ${method} ${fullUrl} \\\n  -H "Authorization: Bearer ${token}" \\\n  -H "Content-Type: application/json"${bodyStr ? ` \\\n  -d '${bodyStr}'` : ''}`;
+
+        const python = `import requests\n\nurl = "${fullUrl}"\nheaders = {\n    "Authorization": "Bearer ${token}",\n    "Content-Type": "application/json"\n}\n${body ? `payload = ${bodyStrPython}\n\n` : ''}response = requests.${method.toLowerCase()}(url, headers=headers${body ? ', json=payload' : ''})\nprint(response.json())`;
+
+        const node = `const response = await fetch(\n  "${fullUrl}",\n  {\n    method: "${method}",\n    headers: {\n      "Authorization": \`Bearer ${token}\`,\n      "Content-Type": "application/json"\n    }${body ? `,\n    body: JSON.stringify(${JSON.stringify(body, null, 6).trim()})` : ''}\n  }\n);\n\nconst data = await response.json();\nconsole.log(data);`;
+
+        const php = `<?php\n\n$ch = curl_init();\n\ncurl_setopt_array($ch, [\n  CURLOPT_URL => "${fullUrl}",\n  CURLOPT_RETURNTRANSFER => true,\n  CURLOPT_CUSTOMREQUEST => "${method}",\n  CURLOPT_HTTPHEADER => [\n    "Authorization: Bearer ${token}",\n    "Content-Type: application/json"\n  ]${body ? `,\n  CURLOPT_POSTFIELDS => json_encode(${JSON.stringify(body, null, 4).trim()})` : ''}\n]);\n\n$result = curl_exec($ch);\ncurl_close($ch);\necho $result;`;
+
+        return { curl, python, node, php };
+    }, [method, fullUrl, body, token]);
+
     const handleCopy = useCallback(() => {
-        const text = getPlainText(lang);
-        navigator.clipboard.writeText(text).then(() => {
+        navigator.clipboard.writeText(snippets[lang]).then(() => {
             setCopied(true);
             setTimeout(() => setCopied(false), 1500);
         });
-    }, [lang]);
+    }, [lang, snippets]);
+
+    const renderedLines = useMemo(() => {
+        return snippets[lang].split('\n').map((line, i) => ({
+            num: i + 1,
+            html: highlight(line, lang)
+        }));
+    }, [lang, snippets]);
 
     return (
         <div className={styles.wrap}>
             <div className={styles.panel}>
                 <div className={styles.topbar}>
-                    <span className={styles.label}>AUTHENTICATED REQUEST</span>
+                    <span className={styles.label}>{label}</span>
                     <div className={styles.controls}>
                         <div className={styles.langSelect}>
                             <select
-                                id="langSel"
                                 value={lang}
                                 onChange={(e) => setLang(e.target.value as Language)}
                             >
@@ -144,12 +147,12 @@ export default function ApiCodeToggler() {
                 </div>
                 <div className={styles.codeBlock}>
                     <div className={styles.codeLines}>
-                        {snippets[lang].map((line, i) => (
-                            <div key={i} className={styles.codeLine}>
-                                <span className={styles.lineNum}>{line[0] !== null ? line[0] : i + 1}</span>
+                        {renderedLines.map((line) => (
+                            <div key={line.num} className={styles.codeLine}>
+                                <span className={styles.lineNum}>{line.num}</span>
                                 <span
                                     className={styles.lineCode}
-                                    dangerouslySetInnerHTML={{ __html: line[1] }}
+                                    dangerouslySetInnerHTML={{ __html: line.html }}
                                 />
                             </div>
                         ))}

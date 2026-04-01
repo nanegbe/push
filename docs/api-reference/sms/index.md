@@ -70,17 +70,16 @@ Content-Type: application/json; charset=utf-8
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
-  "groupIds": ["group-id-1", "group-id-2"],
-  "recipients": ["23320*******", "23320*******"],
-  "message": "Promo message",
-  "senderId": "eSMS"
-}'
-```
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sms/send" 
+  body={{
+    "groupIds": ["group-id-1", "group-id-2"],
+    "recipients": ["23320*******", "23320*******"],
+    "message": "Promo message",
+    "senderId": "eSMS"
+  }}
+/>
 
 ---
 
@@ -173,16 +172,15 @@ Content-Type: application/json
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sms/resend \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sms/resend" 
+  body={{
     "references": [
       "6041c21f-b8d1-4272-be16-7c2c395ac6f9"
     ]
-  }'
-```
+  }}
+/>
 
 ---
 
@@ -231,17 +229,16 @@ Content-Type: application/json
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sms/estimate \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sms/estimate" 
+  body={{
     "groupIds": ["group-id-1"],
     "recipients": ["+23354*******"],
     "message": "Hello, this is a test message.",
     "sender": "Esoko"
-  }'
-```
+  }}
+/>
 
 ---
 
@@ -333,11 +330,10 @@ Content-Type: application/json
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sms/schedule \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sms/schedule" 
+  body={{
     "groupIds": ["group-id-1"],
     "recipients": [
       "+23354*******",
@@ -346,8 +342,8 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/schedule \
     "message": "Hello, this is a scheduled test message",
     "sender": "Esoko",
     "schedule": "2026-02-13T09:23:00.000Z"
-  }'
-```
+  }}
+/>
 
 ---
 
@@ -412,18 +408,25 @@ Content-Type: application/json
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sms/send-to-group \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sms/send-to-group" 
+  body={{
     "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
     "message": "Hello to the entire group!",
     "sender": "Esoko"
-  }'
-```
+  }}
+/>
 
-<ApiCodeToggler />
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sms/send-to-group" 
+  body={{
+    "recipients": ["23320*******", "23320*******"],
+    "message": "Hello to the entire group!",
+    "sender": "Esoko"
+  }}
+/>
 
 ---
 
@@ -481,11 +484,10 @@ Authorization: Bearer <accessToken>
 
 ### Example
 
-```bash
-curl -X GET https://messaging-api.esoko.com/api/v1/sms/status/4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
- 
-```
+<ApiCodeToggler 
+  method="GET" 
+  endpoint="/api/v1/sms/status/4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef" 
+/>
 
 ---
 
@@ -519,11 +521,10 @@ Authorization: Bearer <accessToken>
 
 ### Example
 
-```bash
-curl -X DELETE https://messaging-api.esoko.com/api/v1/sms/schedule/sch_abc123def456 \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  
-```
+<ApiCodeToggler 
+  method="DELETE" 
+  endpoint="/api/v1/sms/schedule/sch_abc123def456" 
+/>
 
 ---
 
