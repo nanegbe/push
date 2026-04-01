@@ -2,6 +2,10 @@
 sidebar_position: 4
 ---
 
+import ApiCodeToggler from '@site/src/components/ApiCodeToggler';
+import ApiTerminal from '@site/src/components/ApiTerminal';
+
+
 # Contacts
 
 Manage your contact groups and recipients. This section covers creating, updating, and managing contact groups for bulk messaging.
@@ -17,18 +21,18 @@ Creates a new contact group by uploading a file containing contact information.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-
-
-Content-Type: multipart/form-data
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: multipart/form-data`} 
+/>
 
 **Body (Form Data):**
-```
-name: api-test
-file: [Excel file with contacts]
-```
+<ApiTerminal 
+  title="BODY" 
+  language="text" 
+  code={`name: api-test\nfile: [Excel file with contacts]`} 
+/>
 
 ### Parameters
 
@@ -48,38 +52,34 @@ The uploaded file should contain phone numbers in the following format:
 - Additional custom fields (optional)
 
 **Example CSV:**
-```csv
-phone,name,email
-+23354*******,John Doe,john@example.com
-+23350*******,Jane Smith,jane@example.com
-```
+<ApiTerminal 
+  title="CSV EXAMPLE" 
+  language="text" 
+  code={`phone,name,email\n+23354*******,John Doe,john@example.com\n+23350*******,Jane Smith,jane@example.com`} 
+/>
 
 ### Response
 
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successfully created contact group",
-  "data": {
-    "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
-    "name": "api-test",
-    "totalContacts": 150,
-    "validContacts": 148,
-    "invalidContacts": 2
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully created contact group",\n  "data": {\n    "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",\n    "name": "api-test",\n    "totalContacts": 150,\n    "validContacts": 148,\n    "invalidContacts": 2\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/contacts/groups \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -F "name=api-test" \
-  -F "file=@/path/to/contacts.xlsx"
-```
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/contacts/groups" 
+  isFormData={true}
+  body={{
+    "name": "api-test",
+    "file": "@ /path/to/contacts.xlsx"
+  }}
+/>
 
 ---
 
@@ -94,11 +94,11 @@ Retrieves all contact groups for the authenticated user.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-
-
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>`} 
+/>
 
 ### Query Parameters
 
@@ -112,33 +112,11 @@ Authorization: Bearer <accessToken>
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": [
-    {
-      "id": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
-      "name": "api-test",
-      "totalContacts": 150,
-      "createdAt": "2026-02-12T10:30:00.000Z",
-      "updatedAt": "2026-02-12T10:30:00.000Z"
-    },
-    {
-      "id": "8f3a2b1c-9d8e-4f7a-b6c5-d4e3f2a1b0c9",
-      "name": "Marketing List",
-      "totalContacts": 500,
-      "createdAt": "2026-02-10T08:15:00.000Z",
-      "updatedAt": "2026-02-11T14:20:00.000Z"
-    }
-  ],
-  "meta": {
-    "total": 2,
-    "currentPage": 1,
-    "totalPages": 1,
-    "perPage": 10
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "id": "2db62b6d-b805-4a92-993e-7f9c8af64e72",\n      "name": "api-test",\n      "totalContacts": 150,\n      "createdAt": "2026-02-12T10:30:00.000Z",\n      "updatedAt": "2026-02-12T10:30:00.000Z"\n    },\n    {\n      "id": "8f3a2b1c-9d8e-4f7a-b6c5-d4e3f2a1b0c9",\n      "name": "Marketing List",\n      "totalContacts": 500,\n      "createdAt": "2026-02-10T08:15:00.000Z",\n      "updatedAt": "2026-02-11T14:20:00.000Z"\n    }\n  ],\n  "meta": {\n    "total": 2,\n    "currentPage": 1,\n    "totalPages": 1,\n    "perPage": 10\n  }\n}`} 
+/>
 
 ### Example
 
@@ -160,12 +138,11 @@ Retrieves detailed information about a specific contact group including all cont
 
 ### Request
 
-**Headers:**
-```
-Authorization: Bearer <accessToken>
-
-
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>`} 
+/>
 
 ### Path Parameters
 
@@ -178,40 +155,18 @@ Authorization: Bearer <accessToken>
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": {
-    "id": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
-    "name": "api-test",
-    "contacts": [
-      {
-        "id": "c1",
-        "phone": "+23354*******",
-        "name": "John Doe",
-        "email": "john@example.com"
-      },
-      {
-        "id": "c2",
-        "phone": "+23350*******",
-        "name": "Jane Smith",
-        "email": "jane@example.com"
-      }
-    ],
-    "totalContacts": 150,
-    "createdAt": "2026-02-12T10:30:00.000Z",
-    "updatedAt": "2026-02-12T10:30:00.000Z"
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": {\n    "id": "2db62b6d-b805-4a92-993e-7f9c8af64e72",\n    "name": "api-test",\n    "contacts": [\n      {\n        "id": "c1",\n        "phone": "+23354*******",\n        "name": "John Doe",\n        "email": "john@example.com"\n      },\n      {\n        "id": "c2",\n        "phone": "+23350*******",\n        "name": "Jane Smith",\n        "email": "jane@example.com"\n      }\n    ],\n    "totalContacts": 150,\n    "createdAt": "2026-02-12T10:30:00.000Z",\n    "updatedAt": "2026-02-12T10:30:00.000Z"\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X GET https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-
-```
+<ApiCodeToggler 
+  method="GET" 
+  endpoint="/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72" 
+/>
 
 ---
 
@@ -226,47 +181,42 @@ Updates the name or contacts of an existing group.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Path Parameters:**
 - `groupId` - UUID of the group to update
 
 **Body:**
-```json
-{
-  "name": "Updated Group Name"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "name": "Updated Group Name"\n}`} 
+/>
 
 ### Response
 
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successfully updated contact group",
-  "data": {
-    "id": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
-    "name": "Updated Group Name",
-    "totalContacts": 150
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully updated contact group",\n  "data": {\n    "id": "2db62b6d-b805-4a92-993e-7f9c8af64e72",\n    "name": "Updated Group Name",\n    "totalContacts": 150\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X PUT https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="PUT" 
+  endpoint="/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72" 
+  body={{
     "name": "Updated Group Name"
-  }'
-```
+  }}
+/>
 
 ---
 
@@ -280,31 +230,29 @@ Deletes a contact group and all its contacts.
 
 ### Request
 
-**Headers:**
-```
-Authorization: Bearer <accessToken>
-
-
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>`} 
+/>
 
 ### Response
 
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successfully deleted contact group"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully deleted contact group"\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X DELETE https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72 \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  
-```
+<ApiCodeToggler 
+  method="DELETE" 
+  endpoint="/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72" 
+/>
 
 ---
 
@@ -319,75 +267,72 @@ Adds new contacts to an existing group.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-
-
-Content-Type: multipart/form-data
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: multipart/form-data`} 
+/>
 
 **Body (Form Data):**
-```
-file: [Excel or CSV file with new contacts]
-```
+<ApiTerminal 
+  title="BODY" 
+  language="text" 
+  code={`file: [Excel or CSV file with new contacts]`} 
+/>
 
 ### Response
 
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successfully added contacts to group",
-  "data": {
-    "addedContacts": 25,
-    "totalContacts": 175
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully added contacts to group",\n  "data": {\n    "addedContacts": 25,\n    "totalContacts": 175\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/contacts/groups/2db62b6d-b805-4a92-993e-7f9c8af64e72/contacts \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -F "file=@new-contacts.csv"
-```
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/contacts/groups/:groupId/contacts" 
+  isFormData={true}
+  body={{
+    "file": "@ new-contacts.csv"
+  }}
+/>
 
 ---
 
 ## Error Responses
 
 ### Group Not Found (404 Not Found)
-```json
-{
-  "message": "Contact group not found"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Contact group not found"\n}`} 
+/>
 
 ### Invalid File Format (400 Bad Request)
-```json
-{
-  "message": "Invalid file format",
-  "errors": [
-    "File must be Excel (.xls, .xlsx) or CSV format"
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid file format",\n  "errors": [\n    "File must be Excel (.xls, .xlsx) or CSV format"\n  ]\n}`} 
+/>
 
 ### Duplicate Group Name (409 Conflict)
-```json
-{
-  "message": "A group with this name already exists"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "A group with this name already exists"\n}`} 
+/>
 
 ### Unauthorized (401 Unauthorized)
-```json
-{
-  "message": "Invalid or expired access token"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid or expired access token"\n}`} 
+/>
 
 ---
 

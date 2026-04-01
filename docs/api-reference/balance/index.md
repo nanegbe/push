@@ -2,6 +2,10 @@
 sidebar_position: 6
 ---
 
+import ApiCodeToggler from '@site/src/components/ApiCodeToggler';
+import ApiTerminal from '@site/src/components/ApiTerminal';
+
+
 # Balance
 
 Manage your account balance and view transaction history. This section covers checking balance, topping up, and viewing transactions.
@@ -17,10 +21,11 @@ Retrieves the current account balance.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-x-account-id: <account-id>
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nx-account-id: <account-id>`} 
+/>
 
 ### Headers
 
@@ -33,33 +38,25 @@ x-account-id: <account-id>
 **Status Code:** `200 OK`
 
 **Headers:**
-```
-X-Powered-By: Express
-X-RateLimit-Limit: 60
-X-RateLimit-Remaining: 59
-X-RateLimit-Reset: 60
-Content-Type: application/json; charset=utf-8
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`X-Powered-By: Express\nX-RateLimit-Limit: 60\nX-RateLimit-Remaining: 59\nX-RateLimit-Reset: 60\nContent-Type: application/json; charset=utf-8`} 
+/>
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": {
-    "balance": "150.50",
-    "currency": "GHS",
-    "lastUpdated": "2026-02-16T08:46:52.595Z"
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": {\n    "balance": "150.50",\n    "currency": "GHS",\n    "lastUpdated": "2026-02-16T08:46:52.595Z"\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X GET https://messaging-api.esoko.com/api/v1/balance \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "x-account-id: acc_123456"
-```
+<ApiCodeToggler 
+  method="GET" 
+  endpoint="/api/v1/balance" 
+/>
 
 ---
 
@@ -74,19 +71,18 @@ Initiates a balance top-up via payment gateway.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-x-account-id: <account-id>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nx-account-id: <account-id>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "amount": "100.00",
-  "currency": "GHS"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "amount": "100.00",\n  "currency": "GHS"\n}`} 
+/>
 
 ### Parameters
 
@@ -100,15 +96,11 @@ Content-Type: application/json
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successfully topped up account balance",
-  "data": {
-    "checkoutUrl": "https://checkout.paystack.com/ni8t3kafoia65x1",
-    "reference": "topup_1770986337608"
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully topped up account balance",\n  "data": {\n    "checkoutUrl": "https://checkout.paystack.com/ni8t3kafoia65x1",\n    "reference": "topup_1770986337608"\n  }\n}`} 
+/>
 
 ### Payment Flow
 
@@ -120,16 +112,14 @@ Content-Type: application/json
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/balance/top-up \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "x-account-id: acc_123456" \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/balance/top-up" 
+  body={{
     "amount": "100.00",
     "currency": "GHS"
-  }'
-```
+  }}
+/>
 
 ### Payment Gateway Integration
 
@@ -152,10 +142,11 @@ Retrieves transaction history for the account.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-x-account-id: <account-id>
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nx-account-id: <account-id>`} 
+/>
 
 ### Query Parameters
 
@@ -172,45 +163,11 @@ x-account-id: <account-id>
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": [
-    {
-      "id": 3,
-      "userId": 1,
-      "amount": "10.00",
-      "reference": "504f1067-48d5-4bc9-b22d-4c177634e599",
-      "type": "DEBIT",
-      "description": "SMS Campaign - 50 messages",
-      "status": "COMPLETED",
-      "gateway": "PAYSTACK",
-      "balanceAfter": "140.50",
-      "createdAt": "2026-02-16T08:45:58.914Z",
-      "updatedAt": "2026-02-16T08:46:52.595Z"
-    },
-    {
-      "id": 2,
-      "userId": 1,
-      "amount": "70.00",
-      "reference": "833cba71-0ea9-4bb9-b567-eac275e9702c",
-      "type": "CREDIT",
-      "description": "Balance top-up",
-      "status": "COMPLETED",
-      "gateway": "PAYSTACK",
-      "balanceAfter": "150.50",
-      "createdAt": "2026-02-16T08:20:22.120Z",
-      "updatedAt": "2026-02-16T08:42:40.353Z"
-    }
-  ],
-  "meta": {
-    "total": 2,
-    "currentPage": 1,
-    "totalPages": 1,
-    "perPage": 10
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "id": 3,\n      "userId": 1,\n      "amount": "10.00",\n      "reference": "504f1067-48d5-4bc9-b22d-4c177634e599",\n      "type": "DEBIT",\n      "description": "SMS Campaign - 50 messages",\n      "status": "COMPLETED",\n      "gateway": "PAYSTACK",\n      "balanceAfter": "140.50",\n      "createdAt": "2026-02-16T08:45:58.914Z",\n      "updatedAt": "2026-02-16T08:46:52.595Z"\n    },\n    {\n      "id": 2,\n      "userId": 1,\n      "amount": "70.00",\n      "reference": "833cba71-0ea9-4bb9-b567-eac275e9702c",\n      "type": "CREDIT",\n      "description": "Balance top-up",\n      "status": "COMPLETED",\n      "gateway": "PAYSTACK",\n      "balanceAfter": "150.50",\n      "createdAt": "2026-02-16T08:20:22.120Z",\n      "updatedAt": "2026-02-16T08:42:40.353Z"\n    }\n  ],\n  "meta": {\n    "total": 2,\n    "currentPage": 1,\n    "totalPages": 1,\n    "perPage": 10\n  }\n}`} 
+/>
 
 ### Transaction Types
 
@@ -230,19 +187,17 @@ x-account-id: <account-id>
 
 ### Example
 
-```bash
-curl -X GET "https://messaging-api.esoko.com/api/v1/balance/transactions?page=1&pageSize=10" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "x-account-id: acc_123456"
-```
+<ApiCodeToggler 
+  method="GET" 
+  endpoint="/api/v1/balance/transactions?page=1&pageSize=10" 
+/>
 
 ### Filtered Example
 
-```bash
-curl -X GET "https://messaging-api.esoko.com/api/v1/balance/transactions?startDate=2026-02-01T00:00:00.000Z&endDate=2026-02-28T23:59:59.000Z&type=CREDIT" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "x-account-id: acc_123456"
-```
+<ApiCodeToggler 
+  method="GET" 
+  endpoint="/api/v1/balance/transactions?startDate=2026-02-01T00:00:00.000Z&endDate=2026-02-28T23:59:59.000Z&type=CREDIT" 
+/>
 
 ---
 
@@ -257,10 +212,11 @@ Retrieves detailed information about a specific transaction.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-x-account-id: <account-id>
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nx-account-id: <account-id>`} 
+/>
 
 ### Path Parameters
 
@@ -273,37 +229,18 @@ x-account-id: <account-id>
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": {
-    "id": 3,
-    "userId": 1,
-    "amount": "10.00",
-    "reference": "504f1067-48d5-4bc9-b22d-4c177634e599",
-    "type": "DEBIT",
-    "description": "SMS Campaign - 50 messages",
-    "status": "COMPLETED",
-    "gateway": "PAYSTACK",
-    "paymentMethod": "Mobile Money",
-    "metadata": {
-      "messagesSent": 50,
-      "costPerMessage": "0.20"
-    },
-    "balanceAfter": "140.50",
-    "createdAt": "2026-02-16T08:45:58.914Z",
-    "updatedAt": "2026-02-16T08:46:52.595Z"
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": {\n    "id": 3,\n    "userId": 1,\n    "amount": "10.00",\n    "reference": "504f1067-48d5-4bc9-b22d-4c177634e599",\n    "type": "DEBIT",\n    "description": "SMS Campaign - 50 messages",\n    "status": "COMPLETED",\n    "gateway": "PAYSTACK",\n    "paymentMethod": "Mobile Money",\n    "metadata": {\n      "messagesSent": 50,\n      "costPerMessage": "0.20"\n    },\n    "balanceAfter": "140.50",\n    "createdAt": "2026-02-16T08:45:58.914Z",\n    "updatedAt": "2026-02-16T08:46:52.595Z"\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X GET https://messaging-api.esoko.com/api/v1/balance/transactions/3 \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "x-account-id: acc_123456"
-```
+<ApiCodeToggler 
+  method="GET" 
+  endpoint="/api/v1/balance/transactions/3" 
+/>
 
 ---
 
@@ -318,20 +255,18 @@ Sets up automatic low balance notifications.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-x-account-id: <account-id>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nx-account-id: <account-id>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "threshold": "50.00",
-  "enabled": true,
-  "notificationEmail": "admin@example.com"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "threshold": "50.00",\n  "enabled": true,\n  "notificationEmail": "admin@example.com"\n}`} 
+/>
 
 ### Parameters
 
@@ -346,67 +281,55 @@ Content-Type: application/json
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Balance alert configured successfully",
-  "data": {
-    "threshold": "50.00",
-    "enabled": true,
-    "currentBalance": "150.50"
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Balance alert configured successfully",\n  "data": {\n    "threshold": "50.00",\n    "enabled": true,\n    "currentBalance": "150.50"\n  }\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/balance/alerts \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "x-account-id: acc_123456" \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/balance/alerts" 
+  body={{
     "threshold": "50.00",
     "enabled": true,
     "notificationEmail": "admin@example.com"
-  }'
-```
+  }}
+/>
 
 ---
 
 ## Error Responses
 
 ### Insufficient Balance (402 Payment Required)
-```json
-{
-  "message": "Insufficient balance to complete this operation",
-  "currentBalance": "5.00",
-  "requiredAmount": "10.00"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Insufficient balance to complete this operation",\n  "currentBalance": "5.00",\n  "requiredAmount": "10.00"\n}`} 
+/>
 
 ### Invalid Amount (400 Bad Request)
-```json
-{
-  "message": "Invalid amount",
-  "errors": [
-    "Amount must be greater than zero"
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid amount",\n  "errors": [\n    "Amount must be greater than zero"\n  ]\n}`} 
+/>,StartLine:378,TargetContent:
 
 ### Account Not Found (404 Not Found)
-```json
-{
-  "message": "Account not found"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Account not found"\n}`} 
+/>
 
 ### Unauthorized (401 Unauthorized)
-```json
-{
-  "message": "Invalid or expired access token"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid or expired access token"\n}`} 
+/>
 
 ---
 
