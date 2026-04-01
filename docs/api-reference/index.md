@@ -2,15 +2,21 @@
 sidebar_position: 1
 ---
 
+import ApiCodeToggler from '@site/src/components/ApiCodeToggler';
+import ApiTerminal from '@site/src/components/ApiTerminal';
+
+
 # API Overview
 
 Welcome to the Push Messaging API documentation. This API provides a comprehensive set of endpoints for sending SMS messages, voice calls, managing contacts, and handling authentication.
 
 ## Base URL
 
-```
-https://messaging-api.esoko.com/api/v1
-```
+<ApiTerminal 
+  title="BASE URL" 
+  language="text" 
+  code={`https://messaging-api.esoko.com/api/v1`} 
+/>
 
 <!-- Replace `localhost:3000` with your actual server URL in production. -->
 
@@ -26,9 +32,11 @@ The API uses one authentication method:
 
 Most endpoints require the following headers:
 
-```
-Authorization: Bearer <accessToken>
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>`} 
+/>
 
 ## Rate Limiting
 
@@ -46,36 +54,27 @@ All responses follow a consistent JSON format:
 
 ### Success Response (200/201)
 
-```json
-{
-  "message": "Successful",
-  "data": { ... }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": { ... }\n}`} 
+/>
 
 ### Paginated Response
 
-```json
-{
-  "message": "Successful",
-  "data": [ ... ],
-  "meta": {
-    "total": 100,
-    "currentPage": 1,
-    "totalPages": 10,
-    "perPage": 10
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": [ ... ],\n  "meta": {\n    "total": 100,\n    "currentPage": 1,\n    "totalPages": 10,\n    "perPage": 10\n  }\n}`} 
+/>
 
 ### Error Response
 
-```json
-{
-  "message": "Error description",
-  "errors": [ ... ] // Optional validation errors
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Error description",\n  "errors": [ ... ] // Optional validation errors\n}`} 
+/>
 
 ## Quick Start
 
