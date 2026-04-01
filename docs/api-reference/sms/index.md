@@ -3,6 +3,8 @@ sidebar_position: 5
 ---
 
 import ApiCodeToggler from '@site/src/components/ApiCodeToggler';
+import ApiTerminal from '@site/src/components/ApiTerminal';
+
 
 
 # SMS
@@ -20,19 +22,18 @@ Sends an SMS message to one or more recipients.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "recipients": ["+23354*******"],
-  "message": "Hello, this is a test message.",
-  "sender": "Esoko"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "recipients": ["+23354*******"],\n  "message": "Hello, this is a test message.",\n  "sender": "Esoko"\n}`} 
+/>
 
 ### Parameters
 
@@ -47,26 +48,18 @@ Content-Type: application/json
 **Status Code:** `201 Created`
 
 **Headers:**
-```
-X-Powered-By: Express
-X-RateLimit-Limit: 60
-X-RateLimit-Remaining: 59
-X-RateLimit-Reset: 60
-Content-Type: application/json; charset=utf-8
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`X-Powered-By: Express\nX-RateLimit-Limit: 60\nX-RateLimit-Remaining: 59\nX-RateLimit-Reset: 60\nContent-Type: application/json; charset=utf-8`} 
+/>
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": [
-    {
-      "phoneNumber": "23354*******",
-      "reference": "4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef"
-    }
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "23354*******",\n      "reference": "4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef"\n    }\n  ]\n}`} 
+/>
 
 ### Example
 
@@ -90,35 +83,18 @@ Sends the same message to multiple phone numbers.
 **Endpoint:** `POST /api/v1/sms/send`
 
 **Request Body:**
-```json
-{
-  "groupIds": ["group-id-1", "group-id-2"],
-  "recipients": ["+23354*******", "+23350*******", "+23324*******"],
-  "message": "Hello to all recipients!",
-  "sender": "Esoko"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "groupIds": ["group-id-1", "group-id-2"],\n  "recipients": ["+23354*******", "+23350*******", "+23324*******"],\n  "message": "Hello to all recipients!",\n  "sender": "Esoko"\n}`} 
+/>
 
 **Response:**
-```json
-{
-  "message": "Successful",
-  "data": [
-    {
-      "phoneNumber": "23354*******",
-      "reference": "ref-001"
-    },
-    {
-      "phoneNumber": "23350*******",
-      "reference": "ref-002"
-    },
-    {
-      "phoneNumber": "23324*******",
-      "reference": "ref-003"
-    }
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "23354*******",\n      "reference": "ref-001"\n    },\n    {\n      "phoneNumber": "23350*******",\n      "reference": "ref-002"\n    },\n    {\n      "phoneNumber": "23324*******",\n      "reference": "ref-003"\n    }\n  ]\n}`} 
+/>
 
 ---
 
@@ -139,13 +115,11 @@ Content-Type: application/json
 ```
 
 **Body:**
-```json
-{
-  "references": [
-    "6041c21f-b8d1-4272-be16-7c2c395ac6f9"
-  ]
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "references": [\n    "6041c21f-b8d1-4272-be16-7c2c395ac6f9"\n  ]\n}`} 
+/>
 
 ### Parameters
 
@@ -158,17 +132,11 @@ Content-Type: application/json
 **Status Code:** `201 Created`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": [
-    {
-      "reference": "6041c21f-b8d1-4272-be16-7c2c395ac6f9",
-      "phoneNumber": "23353*******"
-    }
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "reference": "6041c21f-b8d1-4272-be16-7c2c395ac6f9",\n      "phoneNumber": "23353*******"\n    }\n  ]\n}`} 
+/>
 
 ### Example
 
@@ -195,37 +163,29 @@ Calculates the estimated cost for sending an SMS message without actually sendin
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "groupIds": ["group-id-1"],
-  "recipients": ["+23354*******"],
-  "message": "Hello, this is a test message.",
-  "sender": "Esoko"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "groupIds": ["group-id-1"],\n  "recipients": ["+23354*******"],\n  "message": "Hello, this is a test message.",\n  "sender": "Esoko"\n}`} 
+/>
 
 ### Response
 
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": {
-    "totalUnits": 1,
-    "totalCost": 0.02,
-    "currency": "GHS",
-    "recipientCount": 1
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": {\n    "totalUnits": 1,\n    "totalCost": 0.02,\n    "currency": "GHS",\n    "recipientCount": 1\n  }\n}`} 
+/>
 
 ### Example
 
@@ -261,15 +221,11 @@ Resends all failed or pending messages for a specific campaign.
 **Status Code:** `201 Created`
 
 **Body:**
-```json
-{
-  "message": "Successfully initiated resend for campaign",
-  "data": {
-    "campaignId": "cmp_123abc456def",
-    "resendCount": 15
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully initiated resend for campaign",\n  "data": {\n    "campaignId": "cmp_123abc456def",\n    "resendCount": 15\n  }\n}`} 
+/>
 
 ---
 
@@ -284,24 +240,18 @@ Schedules an SMS message to be sent at a future date and time.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "groupIds": ["group-id-1"],
-  "recipients": [
-    "+23354*******",
-    "+23350*******"
-  ],
-  "message": "Hello, this is a scheduled test message",
-  "sender": "Esoko",
-  "schedule": "2026-02-13T09:23:00.000Z"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "groupIds": ["group-id-1"],\n  "recipients": [\n    "+23354*******",\n    "+23350*******"\n  ],\n  "message": "Hello, this is a scheduled test message",\n  "sender": "Esoko",\n  "schedule": "2026-02-13T09:23:00.000Z"\n}`} 
+/>
 
 ### Parameters
 
@@ -317,16 +267,11 @@ Content-Type: application/json
 **Status Code:** `201 Created`
 
 **Body:**
-```json
-{
-  "message": "Successfully scheduled SMS",
-  "data": {
-    "scheduledId": "sch_abc123def456",
-    "scheduledFor": "2026-02-13T09:23:00.000Z",
-    "recipientCount": 2
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully scheduled SMS",\n  "data": {\n    "scheduledId": "sch_abc123def456",\n    "scheduledFor": "2026-02-13T09:23:00.000Z",\n    "recipientCount": 2\n  }\n}`} 
+/>
 
 ### Example
 
@@ -358,19 +303,18 @@ Sends an SMS message to all contacts in a specific group.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",
-  "message": "Hello to the entire group!",
-  "sender": "Esoko"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "groupId": "2db62b6d-b805-4a92-993e-7f9c8af64e72",\n  "message": "Hello to the entire group!",\n  "sender": "Esoko"\n}`} 
+/>
 
 ### Parameters
 
@@ -385,26 +329,11 @@ Content-Type: application/json
 **Status Code:** `201 Created`
 
 **Body:**
-```json
-{
-  "message": "Successfully sent SMS to group",
-  "data": {
-    "totalRecipients": 150,
-    "successfulSends": 148,
-    "failedSends": 2,
-    "references": [
-      {
-        "phoneNumber": "23354*******",
-        "reference": "grp-ref-001"
-      },
-      {
-        "phoneNumber": "23354*******",
-        "reference": "grp-ref-002"
-      }
-    ]
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully sent SMS to group",\n  "data": {\n    "totalRecipients": 150,\n    "successfulSends": 148,\n    "failedSends": 2,\n    "references": [\n      {\n        "phoneNumber": "23354*******",\n        "reference": "grp-ref-001"\n      },\n      {\n        "phoneNumber": "23354*******",\n        "reference": "grp-ref-002"\n      }\n    ]\n  }\n}`} 
+/>
 
 ### Example
 
@@ -441,11 +370,11 @@ Retrieves the delivery status of a sent SMS message.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-
-
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>`} 
+/>
 
 ### Path Parameters
 
@@ -458,18 +387,11 @@ Authorization: Bearer <accessToken>
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successful",
-  "data": {
-    "reference": "4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef",
-    "phoneNumber": "23354*******",
-    "status": "DELIVERED",
-    "sentAt": "2026-02-12T11:10:45.000Z",
-    "deliveredAt": "2026-02-12T11:10:50.000Z"
-  }
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successful",\n  "data": {\n    "reference": "4db7f1c5-af00-4e7a-9d65-bf4ab38e5fef",\n    "phoneNumber": "23354*******",\n    "status": "DELIVERED",\n    "sentAt": "2026-02-12T11:10:45.000Z",\n    "deliveredAt": "2026-02-12T11:10:50.000Z"\n  }\n}`} 
+/>
 
 ### Status Values
 
@@ -502,22 +424,22 @@ Cancels a scheduled SMS before it's sent.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-
-
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>`} 
+/>
 
 ### Response
 
 **Status Code:** `200 OK`
 
 **Body:**
-```json
-{
-  "message": "Successfully cancelled scheduled SMS"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully cancelled scheduled SMS"\n}`} 
+/>
 
 ### Example
 
@@ -531,45 +453,39 @@ Authorization: Bearer <accessToken>
 ## Error Responses
 
 ### Invalid Phone Number (400 Bad Request)
-```json
-{
-  "message": "Invalid phone number format",
-  "errors": [
-    "Phone number must be in international format"
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid phone number format",\n  "errors": [\n    "Phone number must be in international format"\n  ]\n}`} 
+/>
 
 ### Message Too Long (400 Bad Request)
-```json
-{
-  "message": "Message exceeds maximum length",
-  "errors": [
-    "Maximum message length is 160 characters for single SMS"
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Message exceeds maximum length",\n  "errors": [\n    "Maximum message length is 160 characters for single SMS"\n  ]\n}`} 
+/>
 
 ### Invalid Sender ID (400 Bad Request)
-```json
-{
-  "message": "Invalid or unapproved sender ID"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid or unapproved sender ID"\n}`} 
+/>
 
 ### Insufficient Balance (402 Payment Required)
-```json
-{
-  "message": "Insufficient balance to send messages"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Insufficient balance to send messages"\n}`} 
+/>
 
 ### Scheduled Time in Past (400 Bad Request)
-```json
-{
-  "message": "Schedule time must be in the future"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Schedule time must be in the future"\n}`} 
+/>
 
 ---
 

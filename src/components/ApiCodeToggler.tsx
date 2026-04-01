@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import styles from './ApiCodeToggler.module.css';
+import { highlight, TerminalLanguage } from '../utils/highlighter';
 
 interface ApiCodeTogglerProps {
     method: 'GET' | 'POST' | 'PUT' | 'DELETE';
@@ -14,63 +15,6 @@ type Language = 'curl' | 'python' | 'node' | 'php';
 
 const DEFAULT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
 const DEFAULT_URL_BASE = "https://messaging-api.esoko.com";
-
-// Simple syntax highlighter that maps to the user's CSS classes
-const highlight = (code: string, lang: Language): string => {
-    let h = code
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-
-    // Strings
-    h = h.replace(/("(?:\\"|[^"])*")/g, `<span class="${styles.str}">$1</span>`);
-    h = h.replace(/('(?:\\'|[^'])*')/g, `<span class="${styles.str}">$1</span>`);
-    h = h.replace(/(\`(?:\\\`|[^\`])*\`)/g, `<span class="${styles.str}">$1</span>`);
-
-    // Keywords
-    const keywords = lang === 'curl'
-        ? ['curl']
-        : ['import', 'const', 'await', 'let', 'var', 'async', 'function', 'return', 'if', 'else', 'for', 'while', 'new', 'try', 'catch', 'finally', 'true', 'false', 'null', 'undefined'];
-
-    if (lang === 'php') {
-        keywords.push('&lt;?php', 'echo', 'true', 'false');
-    }
-
-    keywords.forEach(kw => {
-        const regex = new RegExp(`\\b${kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'g');
-        h = h.replace(regex, `<span class="${styles.kw}">${kw}</span>`);
-    });
-
-    // Flags (cURL)
-    if (lang === 'curl') {
-        h = h.replace(/(\s)(-[A-Za-z0-9]+)(\s)/g, `$1<span class="${styles.flag}">$2</span>$3`);
-    }
-
-    // URLs
-    h = h.replace(/(https?:\/\/[^\s"']+)/g, `<span class="${styles.url}">$1</span>`);
-
-    // Functions
-    if (lang !== 'curl') {
-        h = h.replace(/\b([a-z_][a-z0-9_]*)\(/gi, `<span class="${styles.fn}">$1</span>(`);
-    }
-
-    // Variables (very basic)
-    if (lang === 'python' || lang === 'php' || lang === 'node') {
-        h = h.replace(/(\$?[a-z_][a-z0-9_]*)\s*=/gi, `<span class="${styles.var}">$1</span> =`);
-    }
-
-    // Numbers
-    h = h.replace(/\b(\d+)\b/g, `<span class="${styles.num}">$1</span>`);
-
-    // Comments
-    if (lang === 'php' || lang === 'node') {
-        h = h.replace(/(\/\/.*)/g, `<span class="${styles.cmt}">$1</span>`);
-    } else if (lang === 'python') {
-        h = h.replace(/(#.*)/g, `<span class="${styles.cmt}">$1</span>`);
-    }
-
-    return h;
-};
 
 export default function ApiCodeToggler({
     method = 'POST',
@@ -110,7 +54,7 @@ export default function ApiCodeToggler({
     const renderedLines = useMemo(() => {
         return snippets[lang].split('\n').map((line, i) => ({
             num: i + 1,
-            html: highlight(line, lang)
+            html: highlight(line, lang as TerminalLanguage)
         }));
     }, [lang, snippets]);
 
