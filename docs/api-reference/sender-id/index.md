@@ -2,6 +2,10 @@
 sidebar_position: 3
 ---
 
+import ApiCodeToggler from '@site/src/components/ApiCodeToggler';
+import ApiTerminal from '@site/src/components/ApiTerminal';
+
+
 # Sender ID
 
 The Sender ID is the identity that appears as the sender of your messages. This section covers creating and managing sender IDs.
@@ -17,17 +21,18 @@ Creates a new sender ID for your messaging campaigns.
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
-```json
-{
-  "name": "Esoko"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "name": "Esoko"\n}`} 
+/>
 
 ### Parameters
 
@@ -40,31 +45,28 @@ Content-Type: application/json
 **Status Code:** `200 OK`
 
 **Headers:**
-```
-X-Powered-By: Express
-X-RateLimit-Limit: 60
-X-RateLimit-Remaining: 59
-X-RateLimit-Reset: 60
-Content-Type: application/json; charset=utf-8
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`X-Powered-By: Express\nX-RateLimit-Limit: 60\nX-RateLimit-Remaining: 59\nX-RateLimit-Reset: 60\nContent-Type: application/json; charset=utf-8`} 
+/>
 
 **Body:**
-```json
-{
-  "message": "Successfully created sender id"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Successfully created sender id"\n}`} 
+/>
 
 ### Example
 
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sender-id \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/sender-id" 
+  body={{
     "name": "Esoko"
-  }'
-```
+  }}
+/>
 
 ---
 
@@ -127,41 +129,36 @@ After submission, your sender ID goes through an approval process:
 
 Once approved, use your sender ID when sending messages:
 
-```json
-{
-  "recipients": ["+23354*******"],
-  "message": "Hello from Esoko!",
-  "sender": "Esoko"
-}
-```
+<ApiTerminal 
+  title="BODY" 
+  language="json" 
+  code={`{\n  "recipients": ["+23354*******"],\n  "message": "Hello from Esoko!",\n  "sender": "Esoko"\n}`} 
+/>
 
 ---
 
 ## Error Responses
 
 ### Invalid Format (400 Bad Request)
-```json
-{
-  "message": "Invalid sender ID format",
-  "errors": [
-    "Sender ID must be 3-11 alphanumeric characters"
-  ]
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid sender ID format",\n  "errors": [\n    "Sender ID must be 3-11 alphanumeric characters"\n  ]\n}`} 
+/>
 
 ### Already Exists (409 Conflict)
-```json
-{
-  "message": "Sender ID already exists"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Sender ID already exists"\n}`} 
+/>
 
 ### Unauthorized (401 Unauthorized)
-```json
-{
-  "message": "Invalid or expired access token"
-}
-```
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Invalid or expired access token"\n}`} 
+/>
 
 ---
 
