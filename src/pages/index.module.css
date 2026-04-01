@@ -248,8 +248,17 @@
 }
 
 .useCaseIcon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ifm-color-primary);
+}
+
+.useCaseIcon svg {
+  width: 32px;
+  height: 32px;
+  stroke-width: 2.25px;
 }
 
 .useCaseTitle {

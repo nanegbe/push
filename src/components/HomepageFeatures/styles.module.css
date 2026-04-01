@@ -38,9 +38,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.65rem;
   margin-bottom: 1.25rem;
   background: var(--landing-gradient-subtle);
+  color: var(--ifm-color-primary);
+}
+
+.featureIcon svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2.25px;
 }
 
 .featureTitle {
