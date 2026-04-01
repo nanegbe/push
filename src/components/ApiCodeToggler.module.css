@@ -1,0 +1,161 @@
+.wrap {
+    max-width: 720px;
+    margin: 1rem 0;
+}
+
+.panel {
+    background: #1e2229;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: #161a20;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: #9aa0ab;
+    text-transform: uppercase;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.langSelect {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.langSelect select {
+    appearance: none;
+    background: #2a2f3a;
+    border: 0.5px solid rgba(255, 255, 255, 0.15);
+    color: #e4e7ec;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    padding: 5px 28px 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+}
+
+.langSelect select:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.chevron {
+    position: absolute;
+    right: 8px;
+    pointer-events: none;
+    color: #9aa0ab;
+    font-size: 10px;
+}
+
+.iconBtn {
+    background: #2a2f3a;
+    border: 0.5px solid rgba(255, 255, 255, 0.15);
+    color: #9aa0ab;
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.15s, color 0.15s;
+    padding: 0;
+}
+
+.iconBtn:hover {
+    background: #343b49;
+    color: #e4e7ec;
+}
+
+.iconBtn.copied {
+    color: #4ade80;
+    border-color: rgba(74, 222, 128, 0.3);
+}
+
+.codeBlock {
+    padding: 20px 20px 20px 0;
+    overflow-x: auto;
+}
+
+.codeLines {
+    display: table;
+    width: 100%;
+}
+
+.codeLine {
+    display: table-row;
+}
+
+.lineNum {
+    display: table-cell;
+    padding: 1px 16px;
+    font-size: 13px;
+    font-family: var(--ifm-font-family-monospace);
+    color: #4a5061;
+    text-align: right;
+    user-select: none;
+    min-width: 40px;
+    white-space: nowrap;
+}
+
+.lineCode {
+    display: table-cell;
+    padding: 1px 0;
+    font-size: 13px;
+    font-family: var(--ifm-font-family-monospace);
+    color: #c9d1d9;
+    white-space: pre;
+}
+
+/* Syntax Highlighting Colors */
+.kw {
+    color: #ff79c6;
+}
+
+.url {
+    color: #8be9fd;
+}
+
+.flag {
+    color: #50fa7b;
+}
+
+.str {
+    color: #f1fa8c;
+}
+
+.cmt {
+    color: #6272a4;
+    font-style: italic;
+}
+
+.var {
+    color: #bd93f9;
+}
+
+.fn {
+    color: #50fa7b;
+}
+
+.num {
+    color: #ffb86c;
+}

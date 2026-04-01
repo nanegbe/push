@@ -2,6 +2,9 @@
 sidebar_position: 5
 ---
 
+import ApiCodeToggler from '@site/src/components/ApiCodeToggler';
+
+
 # SMS
 
 Send and manage SMS messages. This section covers sending individual messages, scheduling, resending, and group messaging.
@@ -420,18 +423,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/sms/send-to-group \
   }'
 ```
 
----
-
-```bash
-curl -X POST https://messaging-api.esoko.com/api/v1/sms/send-to-group \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  -H "Content-Type: application/json" \
-  -d '{
-    "recipients": "23320*******", "23320*******",
-    "message": "Hello to the entire group!",
-    "sender": "Esoko"
-  }'
-```
+<ApiCodeToggler />
 
 ---
 
