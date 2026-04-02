@@ -145,14 +145,14 @@ Sends the same voice message to multiple phone numbers.
 <ApiTerminal 
   title="BODY" 
   language="json" 
-  code={`{\n  "recipients": ["054*******", "0500318982", "0244123456"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
+  code={`{\n  "recipients": ["054*******", "050*******", "024*******"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
 />
 
 **Response:**
 <ApiTerminal 
   title="RESPONSE" 
   language="json" 
-  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "054*******",\n      "reference": "voice-ref-001"\n    },\n    {\n      "phoneNumber": "0500318982",\n      "reference": "voice-ref-002"\n    },\n    {\n      "phoneNumber": "0244123456",\n      "reference": "voice-ref-003"\n    }\n  ]\n}`} 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "054*******",\n      "reference": "voice-ref-001"\n    },\n    {\n      "phoneNumber": "050*******",\n      "reference": "voice-ref-002"\n    },\n    {\n      "phoneNumber": "024*******",\n      "reference": "voice-ref-003"\n    }\n  ]\n}`} 
 />
 
 ---
@@ -387,7 +387,7 @@ Sends a voice message to all contacts in a specific group.
 <ApiTerminal 
   title="RESPONSE" 
   language="json" 
-  code={`{\n  "message": "Successfully sent voice message to group",\n  "data": {\n    "totalRecipients": 150,\n    "successfulCalls": 148,\n    "failedCalls": 2,\n    "references": [\n      {\n        "phoneNumber": "054*******",\n        "reference": "grp-voice-ref-001"\n      },\n      {\n        "phoneNumber": "0500318982",\n        "reference": "grp-voice-ref-002"\n      }\n    ]\n  }\n}`} 
+  code={`{\n  "message": "Successfully sent voice message to group",\n  "data": {\n    "totalRecipients": 150,\n    "successfulCalls": 148,\n    "failedCalls": 2,\n    "references": [\n      {\n        "phoneNumber": "054*******",\n        "reference": "grp-voice-ref-001"\n      },\n      {\n        "phoneNumber": "050*******",\n        "reference": "grp-voice-ref-002"\n      }\n    ]\n  }\n}`} 
 />
 
 ### Example
