@@ -172,7 +172,7 @@ Now that you've mastered the basics, explore more features:
   method="POST" 
   endpoint="/api/v1/calls/initiate" 
   body={{
-    "recipients": ["0547071660"],
+    "recipients": ["054*******"],
     "audioFileName": "UPLOADED_FILE_ID"
   }}
 />
@@ -239,7 +239,7 @@ Use voice calls for urgent alerts:
 <ApiTerminal 
   title="BODY" 
   language="json" 
-  code={`{\n  "recipients": ["0547071660", "0500318982"],\n  "audioFileName": "emergency-alert-file-id"\n}`} 
+  code={`{\n  "recipients": ["054*******", "0500318982"],\n  "audioFileName": "emergency-alert-file-id"\n}`} 
 />
 
 ## Error Handling

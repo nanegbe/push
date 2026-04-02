@@ -101,14 +101,14 @@ Initiates a voice call to one or more recipients with a pre-recorded audio messa
 <ApiTerminal 
   title="BODY" 
   language="json" 
-  code={`{\n  "recipients": ["0547071660"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
+  code={`{\n  "recipients": ["054*******"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
 />
 
 ### Parameters
 
 | Field          | Type     | Required | Description                                      | Example                                |
 |----------------|----------|----------|--------------------------------------------------|----------------------------------------|
-| recipients     | array    | Yes      | Array of phone numbers                           | ["0547071660"]                         |
+| recipients     | array    | Yes      | Array of phone numbers                           | ["054*******"]                         |
 | audioFileName  | string   | Yes      | File ID returned from upload endpoint            | "2102887ea0454c68f339f6f479da0451d"   |
 
 ### Response
@@ -119,7 +119,7 @@ Initiates a voice call to one or more recipients with a pre-recorded audio messa
 <ApiTerminal 
   title="RESPONSE" 
   language="json" 
-  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "0547071660",\n      "reference": "0327df6b-1c83-45d3-a918-18561b57c36e"\n    }\n  ]\n}`} 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "054*******",\n      "reference": "0327df6b-1c83-45d3-a918-18561b57c36e"\n    }\n  ]\n}`} 
 />
 
 ### Example
@@ -145,14 +145,14 @@ Sends the same voice message to multiple phone numbers.
 <ApiTerminal 
   title="BODY" 
   language="json" 
-  code={`{\n  "recipients": ["0547071660", "0500318982", "0244123456"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
+  code={`{\n  "recipients": ["054*******", "0500318982", "0244123456"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
 />
 
 **Response:**
 <ApiTerminal 
   title="RESPONSE" 
   language="json" 
-  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "0547071660",\n      "reference": "voice-ref-001"\n    },\n    {\n      "phoneNumber": "0500318982",\n      "reference": "voice-ref-002"\n    },\n    {\n      "phoneNumber": "0244123456",\n      "reference": "voice-ref-003"\n    }\n  ]\n}`} 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "phoneNumber": "054*******",\n      "reference": "voice-ref-001"\n    },\n    {\n      "phoneNumber": "0500318982",\n      "reference": "voice-ref-002"\n    },\n    {\n      "phoneNumber": "0244123456",\n      "reference": "voice-ref-003"\n    }\n  ]\n}`} 
 />
 
 ---
@@ -195,7 +195,7 @@ Resends a previously sent voice call using its reference ID.
 <ApiTerminal 
   title="RESPONSE" 
   language="json" 
-  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "reference": "89140c53-a027-4492-90ec-41a1206c2b51",\n      "phoneNumber": "0547071660"\n    }\n  ]\n}`} 
+  code={`{\n  "message": "Successful",\n  "data": [\n    {\n      "reference": "89140c53-a027-4492-90ec-41a1206c2b51",\n      "phoneNumber": "054*******"\n    }\n  ]\n}`} 
 />
 
 ### Example
@@ -233,7 +233,7 @@ Calculates the estimated cost for initiating a voice call without actually makin
 <ApiTerminal 
   title="BODY" 
   language="json" 
-  code={`{\n  "recipients": ["0547071660"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
+  code={`{\n  "recipients": ["054*******"],\n  "audioFileName": "2102887ea0454c68f339f6f479da0451d"\n}`} 
 />
 
 ### Response
@@ -254,7 +254,7 @@ Calculates the estimated cost for initiating a voice call without actually makin
   endpoint="/api/v1/calls/estimate" 
   body={{
     "groupIds": ["group-id-1"],
-    "recipients": ["0547071660"],
+    "recipients": ["054*******"],
     "audioFileName": "2102887ea0454c68f339f6f479da0451d"
   }}
 />
@@ -309,14 +309,14 @@ Schedules a voice call to be made at a future date and time.
 <ApiTerminal 
   title="BODY" 
   language="json" 
-  code={`{\n  "recipients": [\n    "0547071660"\n  ],\n  "audioFileName": "d306922bdebf77bbbd8793db93492e38",\n  "schedule": "2026-02-13T12:25:00.000Z"\n}`} 
+  code={`{\n  "recipients": [\n    "054*******"\n  ],\n  "audioFileName": "d306922bdebf77bbbd8793db93492e38",\n  "schedule": "2026-02-13T12:25:00.000Z"\n}`} 
 />
 
 ### Parameters
 
 | Field          | Type     | Required | Description                                      | Example                                |
 |----------------|----------|----------|--------------------------------------------------|----------------------------------------|
-| recipients     | array    | Yes      | Array of phone numbers                           | ["0547071660"]                         |
+| recipients     | array    | Yes      | Array of phone numbers                           | ["054*******"]                         |
 | audioFileName  | string   | Yes      | File ID of uploaded audio                        | "d306922bdebf77bbbd8793db93492e38"    |
 | schedule       | string   | Yes      | ISO 8601 formatted datetime (UTC)                | "2026-02-13T12:25:00.000Z"            |
 
@@ -339,7 +339,7 @@ Schedules a voice call to be made at a future date and time.
   body={{
     "groupIds": ["group-id-1"],
     "recipients": [
-      "0547071660"
+      "054*******"
     ],
     "audioFileName": "d306922bdebf77bbbd8793db93492e38",
     "schedule": "2026-02-13T12:25:00.000Z"
@@ -387,7 +387,7 @@ Sends a voice message to all contacts in a specific group.
 <ApiTerminal 
   title="RESPONSE" 
   language="json" 
-  code={`{\n  "message": "Successfully sent voice message to group",\n  "data": {\n    "totalRecipients": 150,\n    "successfulCalls": 148,\n    "failedCalls": 2,\n    "references": [\n      {\n        "phoneNumber": "0547071660",\n        "reference": "grp-voice-ref-001"\n      },\n      {\n        "phoneNumber": "0500318982",\n        "reference": "grp-voice-ref-002"\n      }\n    ]\n  }\n}`} 
+  code={`{\n  "message": "Successfully sent voice message to group",\n  "data": {\n    "totalRecipients": 150,\n    "successfulCalls": 148,\n    "failedCalls": 2,\n    "references": [\n      {\n        "phoneNumber": "054*******",\n        "reference": "grp-voice-ref-001"\n      },\n      {\n        "phoneNumber": "0500318982",\n        "reference": "grp-voice-ref-002"\n      }\n    ]\n  }\n}`} 
 />
 
 ### Example
@@ -491,7 +491,7 @@ Retrieves the status of a voice call.
 <ApiTerminal 
   title="RESPONSE" 
   language="json" 
-  code={`{\n  "message": "Successful",\n  "data": {\n    "reference": "0327df6b-1c83-45d3-a918-18561b57c36e",\n    "phoneNumber": "0547071660",\n    "status": "COMPLETED",\n    "duration": 45,\n    "initiatedAt": "2026-02-13T11:52:39.000Z",\n    "answeredAt": "2026-02-13T11:52:45.000Z",\n    "completedAt": "2026-02-13T11:53:30.000Z"\n  }\n}`} 
+  code={`{\n  "message": "Successful",\n  "data": {\n    "reference": "0327df6b-1c83-45d3-a918-18561b57c36e",\n    "phoneNumber": "054*******",\n    "status": "COMPLETED",\n    "duration": 45,\n    "initiatedAt": "2026-02-13T11:52:39.000Z",\n    "answeredAt": "2026-02-13T11:52:45.000Z",\n    "completedAt": "2026-02-13T11:53:30.000Z"\n  }\n}`} 
 />
 
 ### Call Status Values
