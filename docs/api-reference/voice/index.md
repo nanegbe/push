@@ -16,7 +16,7 @@ Uploads an audio file to be used for voice messages.
 
 **Endpoint:** `POST {{baseUrl}}/files/upload`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -86,7 +86,7 @@ Initiates a voice call to one or more recipients with a pre-recorded audio messa
 
 **Endpoint:** `POST {{baseUrl}}/calls/initiate`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -163,7 +163,7 @@ Resends a previously sent voice call using its reference ID.
 
 **Endpoint:** `POST {{baseUrl}}/calls/resend`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -294,7 +294,7 @@ Schedules a voice call to be made at a future date and time.
 
 **Endpoint:** `POST {{baseUrl}}/calls/schedule`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -354,7 +354,7 @@ Sends a voice message to all contacts in a specific group.
 
 **Endpoint:** `POST {{baseUrl}}/calls/initiate-to-group`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -466,7 +466,7 @@ Retrieves the status of a voice call.
 
 **Endpoint:** `GET {{baseUrl}}/calls/status/:reference`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -521,7 +521,7 @@ Cancels a scheduled voice call before it's made.
 
 **Endpoint:** `DELETE {{baseUrl}}/calls/schedule/:scheduledId`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 

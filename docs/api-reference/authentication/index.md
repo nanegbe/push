@@ -126,7 +126,7 @@ Generates an API key for programmatic access.
 
 **Endpoint:** `POST {{baseUrl}}/api-keys`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -162,7 +162,7 @@ Retrieves the current API key.
 
 **Endpoint:** `GET {{baseUrl}}/api-keys`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 

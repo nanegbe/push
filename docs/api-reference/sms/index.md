@@ -17,7 +17,7 @@ Sends an SMS message to one or more recipients.
 
 **Endpoint:** `POST {{baseUrl}}/sms/send`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -104,15 +104,16 @@ Resends a previously sent SMS using its reference ID.
 
 **Endpoint:** `POST {{baseUrl}}/sms/resend`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
 **Headers:**
-```
-Authorization: Bearer <accessToken>
-Content-Type: application/json
-```
+<ApiTerminal 
+  title="HEADERS" 
+  language="text" 
+  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+/>
 
 **Body:**
 <ApiTerminal 
@@ -235,7 +236,7 @@ Schedules an SMS message to be sent at a future date and time.
 
 **Endpoint:** `POST {{baseUrl}}/sms/schedule`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -298,7 +299,7 @@ Sends an SMS message to all contacts in a specific group.
 
 **Endpoint:** `POST {{baseUrl}}/sms/send-to-group`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -365,7 +366,7 @@ Retrieves the delivery status of a sent SMS message.
 
 **Endpoint:** `GET {{baseUrl}}/sms/status/:reference`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -419,7 +420,7 @@ Cancels a scheduled SMS before it's sent.
 
 **Endpoint:** `DELETE {{baseUrl}}/sms/schedule/:scheduledId`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -496,7 +497,7 @@ Cancels a scheduled SMS before it's sent.
 3. **Sender ID**: Use only approved sender IDs
 4. **Rate Limiting**: Implement batching for large volumes
 5. **Error Handling**: Handle failed deliveries gracefully
-6. **Testing**: Test with small batches before大规模 sends
+6. **Testing**: Test with small batches before sending
 7. **Scheduling**: Schedule messages considering recipient time zones
 8. **Opt-out**: Honor STOP/UNSUBSCRIBE requests promptly
 

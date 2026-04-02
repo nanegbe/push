@@ -16,7 +16,7 @@ Creates a new sender ID for your messaging campaigns.
 
 **Endpoint:** `POST {{baseUrl}}/sender-id`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -167,4 +167,4 @@ Once approved, use your sender ID when sending messages:
 - Choose a sender ID that represents your brand clearly
 - Submit multiple sender IDs if needed for different message types
 - Allow 24-48 hours for approval in regulated regions
-- Test with a small batch before大规模 sending
+- Test with a small batch before sending

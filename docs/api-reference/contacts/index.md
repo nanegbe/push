@@ -16,7 +16,7 @@ Creates a new contact group by uploading a file containing contact information.
 
 **Endpoint:** `POST {{baseUrl}}/contacts/groups`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -89,7 +89,7 @@ Retrieves all contact groups for the authenticated user.
 
 **Endpoint:** `GET {{baseUrl}}/contacts/groups`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -134,7 +134,7 @@ Retrieves detailed information about a specific contact group including all cont
 
 **Endpoint:** `GET {{baseUrl}}/contacts/groups/:groupId`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -176,7 +176,7 @@ Updates the name or contacts of an existing group.
 
 **Endpoint:** `PUT {{baseUrl}}/contacts/groups/:groupId`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -226,7 +226,7 @@ Deletes a contact group and all its contacts.
 
 **Endpoint:** `DELETE {{baseUrl}}/contacts/groups/:groupId`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -262,7 +262,7 @@ Adds new contacts to an existing group.
 
 **Endpoint:** `POST {{baseUrl}}/contacts/groups/:groupId/contacts`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 

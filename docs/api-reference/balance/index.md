@@ -16,7 +16,7 @@ Retrieves the current account balance.
 
 **Endpoint:** `GET {{baseUrl}}/balance`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -66,7 +66,7 @@ Initiates a balance top-up via payment gateway.
 
 **Endpoint:** `POST {{baseUrl}}/balance/top-up`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -137,7 +137,7 @@ Retrieves transaction history for the account.
 
 **Endpoint:** `GET {{baseUrl}}/balance/transactions`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -207,7 +207,7 @@ Retrieves detailed information about a specific transaction.
 
 **Endpoint:** `GET {{baseUrl}}/balance/transactions/:transactionId`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
@@ -250,7 +250,7 @@ Sets up automatic low balance notifications.
 
 **Endpoint:** `POST {{baseUrl}}/balance/alerts`
 
-**Authentication:** Bearer Token + Client Credentials
+**Authentication:** Bearer Token
 
 ### Request
 
