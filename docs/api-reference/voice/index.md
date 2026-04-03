@@ -634,4 +634,4 @@ Cancels a scheduled voice call before it's made.
 - A/B test different messages for better engagement
 - Monitor call duration to optimize message length
 - Schedule calls during business hours for better answer rates
-- Keep backup audio files ready for quick deployment
+- Keep backup audio files ready for quick deployments
