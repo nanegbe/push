@@ -24,7 +24,7 @@ Retrieves the current account balance.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nx-account-id: <account-id>`} 
+  code={`Authorization: Bearer PM_...\nx-account-id: <account-id>`} 
 />
 
 ### Headers
@@ -74,7 +74,7 @@ Initiates a balance top-up via payment gateway.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nx-account-id: <account-id>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nx-account-id: <account-id>\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -145,7 +145,7 @@ Retrieves transaction history for the account.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nx-account-id: <account-id>`} 
+  code={`Authorization: Bearer PM_...\nx-account-id: <account-id>`} 
 />
 
 ### Query Parameters
@@ -215,7 +215,7 @@ Retrieves detailed information about a specific transaction.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nx-account-id: <account-id>`} 
+  code={`Authorization: Bearer PM_...\nx-account-id: <account-id>`} 
 />
 
 ### Path Parameters
@@ -258,7 +258,7 @@ Sets up automatic low balance notifications.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nx-account-id: <account-id>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nx-account-id: <account-id>\nContent-Type: application/json`} 
 />
 
 **Body:**

@@ -25,7 +25,7 @@ Sends an SMS message to one or more recipients.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -112,7 +112,7 @@ Resends a previously sent SMS using its reference ID.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -167,7 +167,7 @@ Calculates the estimated cost for sending an SMS message without actually sendin
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -244,7 +244,7 @@ Schedules an SMS message to be sent at a future date and time.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -307,7 +307,7 @@ Sends an SMS message to all contacts in a specific group.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -374,7 +374,7 @@ Retrieves the delivery status of a sent SMS message.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>`} 
+  code={`Authorization: Bearer PM_...`} 
 />
 
 ### Path Parameters
@@ -428,7 +428,7 @@ Cancels a scheduled SMS before it's sent.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>`} 
+  code={`Authorization: Bearer PM_...`} 
 />
 
 ### Response

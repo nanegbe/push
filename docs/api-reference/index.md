@@ -35,7 +35,7 @@ Most endpoints require the following headers:
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>`} 
+  code={`Authorization: Bearer PM_...`} 
 />
 
 ## Rate Limiting

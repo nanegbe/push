@@ -24,7 +24,7 @@ Creates a new contact group by uploading a file containing contact information.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: multipart/form-data`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: multipart/form-data`} 
 />
 
 **Body (Form Data):**
@@ -97,7 +97,7 @@ Retrieves all contact groups for the authenticated user.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>`} 
+  code={`Authorization: Bearer PM_...`} 
 />
 
 ### Query Parameters
@@ -122,7 +122,7 @@ Retrieves all contact groups for the authenticated user.
 
 ```bash
 curl -X GET "https://messaging-api.esoko.com/api/v1/contacts/groups?page=1&pageSize=10" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Authorization: Bearer PM_..." \
 
 ```
 
@@ -141,7 +141,7 @@ Retrieves detailed information about a specific contact group including all cont
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>`} 
+  code={`Authorization: Bearer PM_...`} 
 />
 
 ### Path Parameters
@@ -184,7 +184,7 @@ Updates the name or contacts of an existing group.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Path Parameters:**
@@ -233,7 +233,7 @@ Deletes a contact group and all its contacts.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>`} 
+  code={`Authorization: Bearer PM_...`} 
 />
 
 ### Response
@@ -270,7 +270,7 @@ Adds new contacts to an existing group.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: multipart/form-data`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: multipart/form-data`} 
 />
 
 **Body (Form Data):**

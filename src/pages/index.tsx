@@ -59,7 +59,7 @@ function CodeSnippet() {
   const codeText = [
     '# Send an SMS message',
     'curl -X POST https://messaging-api.esoko.com/api/v1/sms/send \\',
-    '  -H "Authorization: Bearer <token>" \\',
+    '  -H "Authorization: Bearer PM_..." \\',
     '  -H "Content-Type: application/json" \\',
     "  -d '{",
     '    "recipients": ["+23354*******"],',

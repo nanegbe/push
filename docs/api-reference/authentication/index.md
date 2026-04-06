@@ -8,7 +8,7 @@ import ApiTerminal from '@site/src/components/ApiTerminal';
 
 # Authentication
 
-The Authentication section covers endpoints for creating API clients, logging in via SSO, and generating API keys.
+The Authentication section covers endpoints for logging in via SSO, and generating API keys.
 
 <!-- ## Create Client Key
 
@@ -119,6 +119,28 @@ curl -X POST https://messaging-api.esoko.com/api/v1/auth/sso-login \
 ```
 
 --- -->
+Before you begin, ensure you have a valid account with the <a href="https://push-sso.esoko.com/en/signup/" target="_blank" rel="noopener noreferrer" style={{fontSize: '1.2rem', fontWeight: '700'}}>Messaging service</a>
+
+Login to get your access token:
+
+<ApiCodeToggler 
+  method="POST" 
+  endpoint="/api/v1/auth/sso-login" 
+  body={{
+    "email": "your-email@example.com",
+    "password": "your-password"
+  }}
+/>
+
+**Response:**
+<ApiTerminal 
+  title="RESPONSE" 
+  language="json" 
+  code={`{\n  "message": "Login successful",\n  "data": {\n    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",\n    "refreshToken": "dGhpcyBpcyBhIHJlZnJlc2ggdG9rZW4...",\n    "expiresIn": 3600\n  }\n}`} 
+/>
+
+Save the `accessToken` - you'll need it for all authenticated requests.
+
 
 ## Generate API Key
 
@@ -134,7 +156,7 @@ Generates an API key for programmatic access.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 ### Response
@@ -170,7 +192,7 @@ Retrieves the current API key.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>`} 
+  code={`Authorization: Bearer PM_...`} 
 />
 
 ### Response

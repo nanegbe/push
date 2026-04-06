@@ -24,7 +24,7 @@ Uploads an audio file to be used for voice messages.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: multipart/form-data`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: multipart/form-data`} 
 />
 
 **Body (Form Data):**
@@ -94,7 +94,7 @@ Initiates a voice call to one or more recipients with a pre-recorded audio messa
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -171,7 +171,7 @@ Resends a previously sent voice call using its reference ID.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -226,7 +226,7 @@ Calculates the estimated cost for initiating a voice call without actually makin
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -302,7 +302,7 @@ Schedules a voice call to be made at a future date and time.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -362,7 +362,7 @@ Sends a voice message to all contacts in a specific group.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -417,7 +417,7 @@ Schedules a voice message to be sent to all contacts in a specific group at a fu
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
@@ -474,7 +474,7 @@ Retrieves the status of a voice call.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>`} 
+  code={`Authorization: Bearer PM_...`} 
 />
 
 ### Path Parameters
@@ -529,7 +529,7 @@ Cancels a scheduled voice call before it's made.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>`} 
+  code={`Authorization: Bearer PM_...`} 
 />
 
 ### Response

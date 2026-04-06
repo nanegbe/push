@@ -198,7 +198,7 @@ All authenticated requests require these headers:
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>`} 
+  code={`Authorization: Bearer PM_...`} 
 />
 
 Optional for multi-account management:

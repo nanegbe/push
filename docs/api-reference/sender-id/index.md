@@ -24,7 +24,7 @@ Creates a new sender ID for your messaging campaigns.
 <ApiTerminal 
   title="HEADERS" 
   language="text" 
-  code={`Authorization: Bearer <accessToken>\nContent-Type: application/json`} 
+  code={`Authorization: Bearer PM_...\nContent-Type: application/json`} 
 />
 
 **Body:**
