@@ -119,7 +119,7 @@ curl -X POST https://messaging-api.esoko.com/api/v1/auth/sso-login \
 ```
 
 --- -->
-Before you begin, ensure you have a valid account with the <a href="https://push-sso.esoko.com/en/signup/" target="_blank" rel="noopener noreferrer" style={{fontSize: '1.2rem', fontWeight: '700'}}>Messaging service</a>
+Before you begin, ensure you have a valid account with <a href="https://push-sso.esoko.com/en/signup/" target="_blank" rel="noopener noreferrer" style={{fontSize: '1.2rem', fontWeight: '700'}}>Push Messaging service</a>
 
 ## Login
 
