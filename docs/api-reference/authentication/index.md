@@ -8,7 +8,7 @@ import ApiTerminal from '@site/src/components/ApiTerminal';
 
 # Authentication
 
-The Authentication section covers endpoints for logging in via SSO, and generating API keys.
+The Authentication section covers endpoints for logging in and generating API keys.
 
 <!-- ## Create Client Key
 
