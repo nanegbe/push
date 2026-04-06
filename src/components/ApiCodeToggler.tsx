@@ -14,7 +14,7 @@ interface ApiCodeTogglerProps {
 
 type Language = 'curl' | 'python' | 'node' | 'php';
 
-const DEFAULT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
+const DEFAULT_TOKEN = "PM_...";
 const DEFAULT_URL_BASE = "https://messaging-api.esoko.com";
 
 export default function ApiCodeToggler({
