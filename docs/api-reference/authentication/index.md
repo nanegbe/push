@@ -121,6 +121,8 @@ curl -X POST https://messaging-api.esoko.com/api/v1/auth/sso-login \
 --- -->
 Before you begin, ensure you have a valid account with the <a href="https://push-sso.esoko.com/en/signup/" target="_blank" rel="noopener noreferrer" style={{fontSize: '1.2rem', fontWeight: '700'}}>Messaging service</a>
 
+## Login
+
 Login to get your access token:
 
 <ApiCodeToggler 
@@ -132,7 +134,11 @@ Login to get your access token:
   }}
 />
 
-**Response:**
+### Response
+
+**Status Code:** `200 OK`
+
+**Body:**
 <ApiTerminal 
   title="RESPONSE" 
   language="json" 
@@ -167,7 +173,7 @@ Generates an API key for programmatic access.
 <ApiTerminal 
   title="RESPONSE" 
   language="json" 
-  code={`{\n  "message": "API key generated successfully",\n  "data": {\n    "apiKey": "sk_live_abc123def456..."\n  }\n}`} 
+  code={`{\n  "message": "API key generated successfully",\n  "data": {\n    "x-api-key": "PM_abc123def456..."\n  }\n}`} 
 />
 
 ### Example
@@ -203,7 +209,7 @@ Retrieves the current API key.
 <ApiTerminal 
   title="RESPONSE" 
   language="json" 
-  code={`{\n  "message": "API key retrieved successfully",\n  "data": {\n    "apiKey": "sk_live_abc123def456...",\n    "createdAt": "2026-02-12T10:30:00.000Z"\n  }\n}`} 
+  code={`{\n  "message": "API key retrieved successfully",\n  "data": {\n    "x-api-key": "PM_abc123def456...",\n    "createdAt": "2026-02-12T10:30:00.000Z"\n  }\n}`} 
 />
 
 ### Example
