@@ -123,7 +123,7 @@ Before you begin, ensure you have a valid account with <a href="https://push-sso
 
 ## Login
 
-Login and generate your API key under **Developer API** in the settings menu.
+Login and generate your API key under <a href="https://app-push.esoko.com/en/settings/" target="_blank" rel="noopener noreferrer" style={{fontSize: '1.2rem', fontWeight: '700'}}>Developer API</a> in the settings menu.
 
 ![API Key Generation](/img/api-key.png)
 
