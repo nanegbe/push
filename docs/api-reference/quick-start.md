@@ -45,25 +45,11 @@ curl -X POST https://messaging-api.esoko.com/api/v1/api-clients \
 
 ## Step 1: Authenticate
 
-Login to get your access token:
+Login and generate your API key under **Developer API** in the settings menu.
 
-<ApiCodeToggler 
-  method="POST" 
-  endpoint="/api/v1/auth/sso-login" 
-  body={{
-    "email": "your-email@example.com",
-    "password": "your-password"
-  }}
-/>
+![API Key Generation](/img/api-key.png)
 
-**Response:**
-<ApiTerminal 
-  title="RESPONSE" 
-  language="json" 
-  code={`{\n  "message": "Login successful",\n  "data": {\n    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",\n    "refreshToken": "dGhpcyBpcyBhIHJlZnJlc2ggdG9rZW4...",\n    "expiresIn": 3600\n  }\n}`} 
-/>
-
-Save the `accessToken` - you'll need it for all authenticated requests.
+Save the `x-api-key` - you'll need it for all authenticated requests.
 
 ## Step 2: Create Sender ID
 
