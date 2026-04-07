@@ -255,6 +255,7 @@ Calculates the estimated cost for initiating a voice call without actually makin
   body={{
     "groupIds": ["group-id-1"],
     "recipients": ["054*******"],
+    "durationSeconds": ["95"],
     "audioFileName": "2102887ea0454c68f339f6f479da0451d"
   }}
 />
