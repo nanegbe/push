@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Push Messaging API',
   tagline: 'Powerful messaging services at your fingertips',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo-push.webp',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -80,7 +80,7 @@ const config: Config = {
       title: 'Push Messaging API',
       logo: {
         alt: 'Push Messaging API Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo-push.webp',
       },
       items: [
         // {
